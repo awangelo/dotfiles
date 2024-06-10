@@ -1,16 +1,15 @@
 #!/bin/bash
-
-THREADS=$(nproc)
-USER=$(whoami)
-TEMPDIR=$(/tmp/awarch)
-mkdir -p $TEMPDIR
+set -e
 
 NORMAL="\033[0m"
 WARNING="\033[35;5;11m"
 ERROR="\033[31;5;11m"
+SUCCESS="\033[32;5;11m"
+
+trap 'echo -e "${ERROR}Error in function $FUNCNAME at line $LINENO${NORMAL}"; exit 1' ERR
 
 pre() {
-    echo -e "${WARNING}[*]: Starting pacman/makepkg tweaks...${NORMAL}"
+    THREADS=$(nproc)
 #pacman
     sudo sed -i "/^#Color/c\Color\nILoveCandy
     /^#VerbosePkgLists/c\VerbosePkgLists
@@ -20,42 +19,40 @@ pre() {
     sudo pacman -Syyu
     sudo pacman -Fy
 #makepkg
-    sudo sed -i "/^#MAKEFLAGS="-j2"/c\MAKEFLAGS="-j$THREADS"" /etc/makepkg.conf
-    sudo sed -i "/^COMPRESSXZ=(xz -c -z -)/c\COMPRESSXZ=(xz -c -z --threads=$THREADS -)" /etc/makepkg.conf
-    sudo sed -i "/^COMPRESSZST=(zstd -c -z -)/c\COMPRESSZST=(zstd -c -z --threads=$THREADS -)" /etc/makepkg.conf
+    sudo sed -i '/^#MAKEFLAGS="-j2"/c\MAKEFLAGS="-j$THREADS"' /etc/makepkg.conf
+    sudo sed -i '/^COMPRESSXZ=(xz -c -z -)/c\COMPRESSXZ=(xz -c -z --threads=$THREADS -)' /etc/makepkg.conf
+    sudo sed -i '/^COMPRESSZST=(zstd -c -z -)/c\COMPRESSZST=(zstd -c -z --threads=$THREADS -)' /etc/makepkg.conf
 #autologin
-    echo -e "[Service]\nExecStart=\nExecStart=-/sbin/agetty --autologin $username --ar %I $TERM" | sudo tee /etc/systemd/system/agetty@tty1.service.d/override.conf
+    sudo mkdir -p /etc/systemd/system/getty@tty1.service.d/
+    echo -e "[Service]\nExecStart=\nExecStart=-/usr/bin/agetty --autologin $(whoami) --noclear %I $TERM" \
+    | sudo tee /etc/systemd/system/getty@tty1.service.d/override.conf
 }
 
 aur() {
-    echo -e "${WARNING}[*]: Installing yay...${NORMAL}"
-    cd $TEMPDIR
-    git clone https://aur.archlinux.org/yay-bin.git
-    cd $TEMPDIR/yay-bin
+    TEMPDIR="$HOME/awarch" && mkdir -p $TEMPDIR && cd $TEMPDIR
+    git clone https://aur.archlinux.org/yay-bin.git && cd yay-bin
     makepkg -si
+    cd $TEMPDIR && rm -rf $TEMPDIR
 }
 
-intallpkg() {
-    echo -e "${WARNING}[*]: Installing packages...${NORMAL}"
+installpkg() {
     sudo pacman -S --noconfirm --needed \
-        base-devel \
-        git \
-        os-prober \
+        base-devel os-prober neovim \
+        curl wget  
 }
 
 nvidia() {
-    echo -e "${WARNING}[*]: Installing NVIDIA drivers...${NORMAL}"
     cat /usr/lib/modules/*/pkgbase | while read krnl; do
         echo "${krnl}-headers" >> 
     done
 }
 
-#grub
-sudo mkdir /mnt/windows && sudo mount /dev/sdb1 /mnt/windows
-cat "\e[33m[*] os-prober: Detecting other OSes\e[0m"
-sudo os-prober
-echo "GRUB_DISABLE_OS_PROBER=false" | sudo tee -a /etc/default/grub
-sudo grub-mkconfig -o /boot/grub/grub.cfg
-
-#post
-echo "You should now reboot the system."
+echo -e "${WARNING}[*]: Starting pacman/makepkg tweaks...${NORMAL}"
+pre
+echo -e "${WARNING}[*]: Installing aur...${NORMAL}"
+aur
+echo -e "${WARNING}[*]: Installing packages...${NORMAL}"
+installpkg
+echo -e "${WARNING}[*]: Installing NVIDIA drivers...${NORMAL}"
+nvidia
+echo -e "${SUCCESS}[*]: Script is done, you should reboot now.${NORMAL}"
