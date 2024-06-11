@@ -7,4 +7,5 @@
 - [x] os-prober
 - [x] grub config
 - [ ] shell setup
+- [ ] basic pkgs
 - [ ] rice...

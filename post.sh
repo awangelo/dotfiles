@@ -79,7 +79,6 @@ nvidia() {
         echo 'Nvidia is not loaded.'
     fi
 
-    # Verificar a versão do driver Nvidia
     echo 'Checking Nvidia driver version...'
     nvidia-smi
     " > ~/check_drivers.sh
