@@ -48,8 +48,8 @@ grub() {
     sudo sed -i '/GRUB_TIMEOUT_STYLE=/c\GRUB_TIMEOUT_STYLE=hidden' /etc/default/grub
     sudo sed -i '/GRUB_DISABLE_OS_PROBER=/c\GRUB_DISABLE_OS_PROBER=false' /etc/default/grub
 
-    DISK=$(lsblk -f | grep 'ntfs' | awk '{print substr($1, 1, length($1)-1)}')
-    EFI_PARTITION=$(lsblk -f | grep "^$DISK" | grep 'fat32' | awk '{print "/dev/" $1}')
+    DISK=$(lsblk -f | grep 'ntfs' | awk '{print substr($1, 3, length($1)-3)}')
+    EFI_PARTITION=$(lsblk -f | grep "^$DISK" | awk 'NR==1{prev=$1} /fat32/{print "/dev/" prev; exit}')
 
     if [ -n "$EFI_PARTITION" ]; then
         echo -e "${SUCCESS}[+]: Found Windows EFI partition at $EFI_PARTITION${NORMAL}"
