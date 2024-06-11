@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-NORMAL="\033[0m"
-WARNING="\x1b[38;5;177m"
-ERROR="\033[31m"
-SUCCESS="\x1b[38;5;123m"
+NORM="\033[0m"
+WARN="\x1b[38;5;177m"
+ERR="\033[31m"
+SUC="\x1b[38;5;123m"
 
-trap 'printf "${ERROR}[!] Error in function %s at line %d${NORMAL}\n" "${FUNCNAME[1]}" "${BASH_LINENO[0]}"; exit 1' ERR EXIT INT TERM HUP
+trap 'printf "${ERR}[!] Error in function %s at line %d${NORM}\n" "${FUNCNAME[1]}" "${BASH_LINENO[0]}"; exit 1' ERR EXIT INT TERM HUP
 
 pre() {
     THREADS=$(nproc)
@@ -18,23 +18,23 @@ pre() {
 
     sudo pacman -Syyu
     sudo pacman -Fy
-    echo -e "${SUCCESS}[+] Done with pacman${NORMAL}"
+    echo -e "${SUC}[+] Done with pacman${NORM}"
 #makepkg
     sudo sed -i "/^#MAKEFLAGS=\"-j2\"/c\MAKEFLAGS=\"-j$THREADS\"" /etc/makepkg.conf
     sudo sed -i '/^COMPRESSXZ=(xz -c -z -)/c\COMPRESSXZ=(xz -c -z --threads=$THREADS -)' /etc/makepkg.conf
     sudo sed -i '/^COMPRESSZST=(zstd -c -z -)/c\COMPRESSZST=(zstd -c -z --threads=$THREADS -)' /etc/makepkg.conf
-    echo -e "${SUCCESS}[+] Done with makepkg${NORMAL}"
+    echo -e "${SUC}[+] Done with makepkg${NORM}"
 #autologin
     sudo mkdir -p /etc/systemd/system/getty@tty1.service.d/
     echo -e "[Service]\nExecStart=\nExecStart=-/usr/bin/agetty --autologin $(whoami) --noclear %I $TERM" \
     | sudo tee /etc/systemd/system/getty@tty1.service.d/override.conf
-    echo -e "${SUCCESS}[+] Done with tty autologin${NORMAL}"
+    echo -e "${SUC}[+] Done with tty autologin${NORM}"
 }
 
 aur() {
     git clone https://aur.archlinux.org/yay-bin.git
     (cd yay-bin && makepkg -si)
-    echo -e "${SUCCESS}[+] Done with yay${NORMAL}"
+    echo -e "${SUC}[+] Done with yay${NORM}"
 }
 
 installpkg() {
@@ -48,36 +48,36 @@ grub() {
     sudo sed -i '/GRUB_TIMEOUT_STYLE=/c\GRUB_TIMEOUT_STYLE=hidden' /etc/default/grub
     sudo sed -i '/GRUB_DISABLE_OS_PROBER=/c\GRUB_DISABLE_OS_PROBER=false' /etc/default/grub
 
-    EFI_PARTITION=$(sudo blkid | grep -i "EFI system" | awk '{print $1}')
+    EFI_PART=$(sudo blkid | grep -i "EFI system" | awk '{print $1}' | cut -d '/' -f 3 | cut -d ':' -f 1)
 
-    if [ -n "$EFI_PARTITION" ]; then
-        echo -e "${SUCCESS}[+]: Found Windows EFI partition at $EFI_PARTITION${NORMAL}"
+    if [ -n "$EFI_PART" ]; then
+        echo -e "${SUC}[+]: Found Windows EFI partition at $EFI_PART${NORM}"
+        echo -n "${SUC}[+]: Is this the correct partition? [Y/n]${NORM} "
         echo -e "$(lsblk)"
-        echo -n "Is this the correct partition? [Y/n] "
         read -n 1 response
         echo
         if [ -z "$response" ] || [ "$response" = "Y" ] || [ "$response" = "y" ]; then
             sudo mkdir -p /mnt/win
-            sudo mount "$EFI_PARTITION" /mnt/win
+            sudo mount "$EFI_PART" /mnt/win
         else
             echo "Operation cancelled by user."
             exit 1
         fi
     else
-        echo -e "${ERROR}[!]: Could not find Windows EFI partition${NORMAL}"
+        echo -e "${ERR}[!]: Could not find Windows EFI partition${NORM}"
         exit 1
     fi
     sudo os-prober
 
     sudo grub-mkconfig -o /boot/grub/grub.cfg
-    echo -e "${SUCCESS}[+] Done with grub${NORMAL}"
+    echo -e "${SUC}[+] Done with grub${NORM}"
 
     sudo umount /mnt/win
 }
 
 nvidia() {
     sudo pacman -S --noconfirm --needed nvidia nvidia-utils nvidia-settings
-    echo -e "${WARNING}[*]: Creating check_drivers.sh script...${NORMAL}"
+    echo -e "${WARN}[*]: Creating check_drivers.sh script...${NORM}"
     echo "#!/bin/bash
 
     echo 'Checking if Nouveau is unloaded...'
@@ -97,18 +97,18 @@ nvidia() {
     nvidia-smi
     " > ~/check_drivers.sh
     chmod +x ~/check_drivers.sh
-    echo -e "${SUCCESS}[+] Done with NVIDIA drivers${NORMAL}"
+    echo -e "${SUC}[+] Done with NVIDIA drivers${NORM}"
 }
 
-echo -e "${WARNING}[*]: Starting pacman/makepkg tweaks...${NORMAL}"
+echo -e "${WARN}[*]: Starting pacman/makepkg tweaks...${NORM}"
 pre
-echo -e "${WARNING}[*]: Installing aur...${NORMAL}"
+echo -e "${WARN}[*]: Installing aur...${NORM}"
 aur
-echo -e "${WARNING}[*]: Installing packages...${NORMAL}"
+echo -e "${WARN}[*]: Installing packages...${NORM}"
 installpkg
-echo -e "${WARNING}[*]: Configuring GRUB...${NORMAL}"
+echo -e "${WARN}[*]: Configuring GRUB...${NORM}"
 grub
-echo -e "${WARNING}[*]: Installing NVIDIA drivers...${NORMAL}"
+echo -e "${WARN}[*]: Installing NVIDIA drivers...${NORM}"
 nvidia
-echo -e "${WARNING}[*]: Execute check_drivers.sh after reboot to check the drivers.${NORMAL}"
-echo -e "${SUCCESS}[+]: Script is done, you should reboot now.${NORMAL}"
+echo -e "${WARN}[*]: Execute check_drivers.sh after reboot to check the drivers.${NORM}"
+echo -e "${SUC}[+]: Script is done, you should reboot now.${NORM}"
