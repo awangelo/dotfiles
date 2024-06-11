@@ -2,11 +2,11 @@
 set -euo pipefail
 
 NORMAL="\033[0m"
-WARNING="\033[35;5;11m"
-ERROR="\033[31;5;11m"
-SUCCESS="\033[32;5;11m"
+WARNING="\033[35m"
+ERROR="\033[31m"
+SUCCESS="\033[36m"
 
-trap 'echo -e "${ERROR}Error in function $FUNCNAME at line $LINENO${NORMAL}"; exit 1' ERR
+trap 'printf "${ERROR}Error in function %s at line %d${NORMAL}\n" "${FUNCNAME[1]}" "${BASH_LINENO[0]}"; exit 1' ERR EXIT INT TERM HUP
 
 pre() {
     THREADS=$(nproc)
