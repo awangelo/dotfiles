@@ -3,8 +3,8 @@
 - [ ] better su handling
 - [x] error handling
 - [x] functions
-- [ ] nvidia drivers
-- [ ] os-prober
-- [ ] grub config
+- [x] nvidia drivers
+- [x] os-prober
+- [x] grub config
 - [ ] shell setup
-- [ ] ...
+- [ ] rice...
