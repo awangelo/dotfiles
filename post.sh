@@ -54,7 +54,7 @@ grub() {
         echo -e "${SUCCESS}[+]: Found Windows EFI partition at $EFI_PARTITION${NORMAL}"
         echo -e "$(lsblk)"
         echo -n "Is this the correct partition? [Y/n] "
-        read -nr 1 response
+        read -n 1 response
         echo
         if [ -z "$response" ] || [ "$response" = "Y" ] || [ "$response" = "y" ]; then
             sudo mkdir -p /mnt/win
