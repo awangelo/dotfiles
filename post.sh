@@ -35,7 +35,7 @@ aur() {
     TEMPDIR="$HOME/awarch" && mkdir -p $TEMPDIR && cd $TEMPDIR
     git clone https://aur.archlinux.org/yay-bin.git && cd yay-bin
     makepkg -si
-    cd $TEMPDIR && rm -rf $TEMPDIR
+    cd $HOME && rm -rf $TEMPDIR
     echo -e "${NORMAL}[+] Done with yay${NORMAL}"
 }
 
