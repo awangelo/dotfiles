@@ -32,11 +32,8 @@ pre() {
 }
 
 aur() {
-    TEMPDIR="$HOME/awarch"
-    mkdir -p $TEMPDIR
-    (cd $TEMPDIR && git clone https://aur.archlinux.org/yay-bin.git && \
-    cd yay-bin && makepkg -si)
-    rm -rf $TEMPDIR
+    git clone https://aur.archlinux.org/yay-bin.git
+    (cd yay-bin && makepkg -si)
     echo -e "${NORMAL}[+] Done with yay${NORMAL}"
 }
 
