@@ -1,5 +1,5 @@
-#!/bin/bash
-set -e
+#!/usr/bin/env bash
+set -euo pipefail
 
 NORMAL="\033[0m"
 WARNING="\033[35;5;11m"
@@ -32,10 +32,11 @@ pre() {
 }
 
 aur() {
-    TEMPDIR="$HOME/awarch" && mkdir -p $TEMPDIR && cd $TEMPDIR
-    git clone https://aur.archlinux.org/yay-bin.git && cd yay-bin
-    makepkg -si
-    cd $HOME && rm -rf $TEMPDIR
+    TEMPDIR="$HOME/awarch"
+    mkdir -p $TEMPDIR
+    (cd $TEMPDIR && git clone https://aur.archlinux.org/yay-bin.git && \
+    cd yay-bin && makepkg -si)
+    rm -rf $TEMPDIR
     echo -e "${NORMAL}[+] Done with yay${NORMAL}"
 }
 
