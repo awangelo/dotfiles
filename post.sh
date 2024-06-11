@@ -48,13 +48,21 @@ grub() {
     sudo sed -i '/GRUB_TIMEOUT_STYLE=/c\GRUB_TIMEOUT_STYLE=hidden' /etc/default/grub
     sudo sed -i '/GRUB_DISABLE_OS_PROBER=/c\GRUB_DISABLE_OS_PROBER=false' /etc/default/grub
 
-    DISK=$(sudo blkid | grep -i "Microsoft" | awk '{print $1}' | cut -d ':' -f 1)
-    EFI_PARTITION=$(sudo blkid | grep -i "EFI system" | grep -i "$DISK" | awk '{print $1}')
+    EFI_PARTITION=$(sudo blkid | grep -i "EFI system" | awk '{print $1}')
 
     if [ -n "$EFI_PARTITION" ]; then
         echo -e "${SUCCESS}[+]: Found Windows EFI partition at $EFI_PARTITION${NORMAL}"
-        sudo mkdir -p /mnt/win
-        sudo mount "$EFI_PARTITION" /mnt/windows
+        echo -e "$(lsblk)"
+        echo -n "Is this the correct partition? [Y/n] "
+        read -nr 1 response
+        echo
+        if [ -z "$response" ] || [ "$response" = "Y" ] || [ "$response" = "y" ]; then
+            sudo mkdir -p /mnt/win
+            sudo mount "$EFI_PARTITION" /mnt/win
+        else
+            echo "Operation cancelled by user."
+            exit 1
+        fi
     else
         echo -e "${ERROR}[!]: Could not find Windows EFI partition${NORMAL}"
         exit 1
