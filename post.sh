@@ -48,23 +48,23 @@ grub() {
     sudo sed -i '/GRUB_TIMEOUT_STYLE=/c\GRUB_TIMEOUT_STYLE=hidden' /etc/default/grub
     sudo sed -i '/GRUB_DISABLE_OS_PROBER=/c\GRUB_DISABLE_OS_PROBER=false' /etc/default/grub
 
-    DISK=$(lsblk -f | grep 'ntfs' | awk '{print substr($1, 3, length($1)-3)}')
-    EFI_PARTITION=$(lsblk -f | grep "^$DISK" | awk 'NR==1{prev=$1} /fat32/{print "/dev/" prev; exit}')
+    DISK=$(sudo blkid | grep -i "Microsoft" | awk '{print $1}' | cut -d ':' -f 1)
+    EFI_PARTITION=$(sudo blkid | grep -i "EFI system" | grep -i "$DISK" | awk '{print $1}')
 
     if [ -n "$EFI_PARTITION" ]; then
         echo -e "${SUCCESS}[+]: Found Windows EFI partition at $EFI_PARTITION${NORMAL}"
+        sudo mkdir -p /mnt/win
+        sudo mount "$EFI_PARTITION" /mnt/windows
     else
         echo -e "${ERROR}[!]: Could not find Windows EFI partition${NORMAL}"
         exit 1
     fi
     sudo os-prober
-    sudo mkdir -p /mnt/windows
-    sudo mount "$PARTITION" /mnt/windows
 
     sudo grub-mkconfig -o /boot/grub/grub.cfg
     echo -e "${SUCCESS}[+] Done with grub${NORMAL}"
 
-    sudo umount /mnt/windows
+    sudo umount /mnt/win
 }
 
 nvidia() {
