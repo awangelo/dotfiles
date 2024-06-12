@@ -52,8 +52,7 @@ aur() {
 }
 
 install_pkgs() {
-    sudo pacman -S --noconfirm --needed \
-        base-devel os-prober curl wget
+    sudo pacman -S --noconfirm --needed base-devel os-prober curl wget
 }
 
 grub() {
