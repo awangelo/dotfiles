@@ -65,23 +65,23 @@ grub() {
     EFI_PART=$(sudo blkid | grep -i "EFI system" | awk '{print $1}' | cut -d ':' -f 1)
 
     # Se encontrar, a monta e executa os-prober para adicionar o windows ao grub
-    if [ -n "$EFI_PART" ]; then
-        echo -e "${SUC}[+] Found Windows EFI partition at $EFI_PART${NORM}"
-        echo -e "$(lsblk)"
-        prompt_timer 60 "Is this the correct EFI partition? [Y/n]"
+    if [ -z "$EFI_PART" ]; then
+        prompt_timer 60 "Windows EFI partition not found, continue anyway? [Y/n]"
         OPT=${promptIn,,}
-        if [ "${OPT}" = "y" ]; then
-            sudo mkdir -p /mnt/win
-            sudo mount "$EFI_PART" /mnt/win
-        else
+        if [ "$OPT" != "y" ]; then
             exit 1
         fi
     else
-        prompt_timer 60 "Windows EFI partition not found, continue anyway? [Y/n]"
-        OPT=${promptIn,,}
-        if [ "${OPT}" != "y" ]; then
-            exit 1
-        fi
+    
+    echo -e "${SUC}[+] Found Windows EFI partition at $EFI_PART${NORM}"
+    echo -e "$(lsblk)"
+    prompt_timer 60 "Is this the correct EFI partition? [Y/n]"
+    OPT=${promptIn,,}
+    if [ "$OPT" = "y" ]; then
+        sudo mkdir -p /mnt/win
+        sudo mount "$EFI_PART" /mnt/win
+    else
+        exit 1
     fi
 
     sudo os-prober
