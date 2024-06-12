@@ -6,7 +6,7 @@ WARN="\x1b[38;5;177m"
 ERR="\033[31m"
 SUC="\x1b[38;5;123m"
 
-trap 'printf "${ERR}[!] Error in function %s at line %d${NORM}\n" "${FUNCNAME[1]}" "${BASH_LINENO[0]}"; exit 1' ERR EXIT INT TERM HUP
+trap 'printf "${ERR}[!] Error in function %s at line %d${NORM}\n" "${FUNCNAME[0]}" "${BASH_LINENO[0]}"; exit 1' ERR EXIT INT TERM HUP
 
 pre() {
     THREADS=$(nproc)
@@ -21,8 +21,8 @@ pre() {
     echo -e "${SUC}[+] Done with pacman${NORM}"
 #makepkg
     sudo sed -i "/^#MAKEFLAGS=\"-j2\"/c\MAKEFLAGS=\"-j$THREADS\"" /etc/makepkg.conf
-    sudo sed -i '/^COMPRESSXZ=(xz -c -z -)/c\COMPRESSXZ=(xz -c -z --threads=$THREADS -)' /etc/makepkg.conf
-    sudo sed -i '/^COMPRESSZST=(zstd -c -z -)/c\COMPRESSZST=(zstd -c -z --threads=$THREADS -)' /etc/makepkg.conf
+    sudo sed -i "s|^COMPRESSXZ=(xz -c -z -)|COMPRESSXZ=(xz -c -z --threads=$THREADS -)|" /etc/makepkg.conf
+    sudo sed -i "s|^COMPRESSZST=(zstd -c -z -)|COMPRESSZST=(zstd -c -z --threads=$THREADS -)|" /etc/makepkg.conf
     echo -e "${SUC}[+] Done with makepkg${NORM}"
 #autologin
     sudo mkdir -p /etc/systemd/system/getty@tty1.service.d/
@@ -51,9 +51,9 @@ grub() {
     EFI_PART=$(sudo blkid | grep -i "EFI system" | awk '{print $1}' | cut -d ':' -f 1)
 
     if [ -n "$EFI_PART" ]; then
-        echo -e "${SUC}[+]: Found Windows EFI partition at $EFI_PART${NORM}"
+        echo -e "${SUC}[+] Found Windows EFI partition at $EFI_PART${NORM}"
         echo -e "$(lsblk)"
-        echo -e "${SUC}[+]: Is this the correct partition? [Y/n]${NORM} "
+        echo -e "${SUC}[+] Is this the correct partition? [Y/n]${NORM} "
         read -n 1 response
         echo
         if [ -z "$response" ] || [ "$response" = "Y" ] || [ "$response" = "y" ]; then
@@ -64,7 +64,7 @@ grub() {
             exit 1
         fi
     else
-        echo -e "${ERR}[!]: Could not find Windows EFI partition${NORM}"
+        echo -e "${ERR}[!] Could not find Windows EFI partition${NORM}"
         exit 1
     fi
     sudo os-prober
@@ -77,7 +77,7 @@ grub() {
 
 nvidia() {
     sudo pacman -S --noconfirm --needed nvidia nvidia-utils nvidia-settings
-    echo -e "${WARN}[*]: Creating check_drivers.sh script...${NORM}"
+    echo -e "${WARN}[*] Creating check_drivers.sh script...${NORM}"
     echo "#!/bin/bash
 
     echo 'Checking if Nouveau is unloaded...'
@@ -100,15 +100,19 @@ nvidia() {
     echo -e "${SUC}[+] Done with NVIDIA drivers${NORM}"
 }
 
-echo -e "${WARN}[*]: Starting pacman/makepkg tweaks...${NORM}"
-pre
-echo -e "${WARN}[*]: Installing aur...${NORM}"
-aur
-echo -e "${WARN}[*]: Installing packages...${NORM}"
-installpkg
-echo -e "${WARN}[*]: Configuring GRUB...${NORM}"
-grub
-echo -e "${WARN}[*]: Installing NVIDIA drivers...${NORM}"
-nvidia
-echo -e "${WARN}[*]: Execute check_drivers.sh after reboot to check the drivers.${NORM}"
-echo -e "${SUC}[+]: Script is done, you should reboot now.${NORM}"
+main() {
+    echo -e "${WARN}[*] Starting pacman/makepkg tweaks...${NORM}"
+    pre
+    echo -e "${WARN}[*] Installing aur...${NORM}"
+    aur
+    echo -e "${WARN}[*] Installing packages...${NORM}"
+    installpkg
+    echo -e "${WARN}[*] Configuring GRUB...${NORM}"
+    grub
+    echo -e "${WARN}[*] Installing NVIDIA drivers...${NORM}"
+    nvidia
+    echo -e "${WARN}[*] Execute check_drivers.sh after reboot to check the drivers.${NORM}"
+    echo -e "${SUC}[+] Script is done, you should reboot now.${NORM}"
+}
+
+main
