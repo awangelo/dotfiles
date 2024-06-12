@@ -16,8 +16,6 @@ pre() {
     /^#ParallelDownloads/c\ParallelDownloads = 5" /etc/pacman.conf
     sudo sed -i '/^#\[multilib\]/,+1 s/^#//' /etc/pacman.conf
 
-    sudo pacman -Syyu
-    sudo pacman -Fy
     echo -e "${SUC}[+] Done with pacman${NORM}"
 #makepkg
     sudo sed -i "/^#MAKEFLAGS=\"-j2\"/c\MAKEFLAGS=\"-j$THREADS\"" /etc/makepkg.conf
@@ -39,8 +37,7 @@ aur() {
 
 installpkg() {
     sudo pacman -S --noconfirm --needed \
-        base-devel os-prober neovim \
-        curl wget 
+        base-devel os-prober curl wget 
 }
 
 grub() {
@@ -92,6 +89,9 @@ nvidia() {
 }
 
 main() {
+    sudo pacman -Syyu --noconfirm
+    sudo pacman -Fy
+
     echo -e "${WARN}[*] Starting pacman/makepkg tweaks...${NORM}"
     pre
     echo -e "${WARN}[*] Installing aur...${NORM}"
@@ -102,6 +102,11 @@ main() {
     grub
     echo -e "${WARN}[*] Installing NVIDIA drivers...${NORM}"
     nvidia
+
+    sudo pacman -Syyu --noconfirm
+    sudo pacman -Scc --noconfirm
+    yay -Scc --noconfirm
+
     echo -e "${SUC}[+] Script is done, you should reboot now.${NORM}"
     echo -e "${WARN}[*] Execute check_drivers.sh on ~ to check drivers${NORM}"
 
