@@ -82,13 +82,8 @@ nvidia() {
 
     echo 'You should NOT see nouveau in the output below:'
 
-    echo 'Checking if Nouveau is unloaded...'
-    lsmod | grep -q nouveau; then
-    if lsmod | grep -q nvidia; then
-        echo 'Nvidia is loaded!'
-    else
-        echo 'Nvidia is not loaded.'
-    fi
+    lsmod | grep nouveau
+    lsmod | grep nvidia
 
     nvidia-smi
     " > ~/check_drivers.sh
