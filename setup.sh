@@ -19,7 +19,6 @@ prompt_timer() {
         [ $? -eq 0 ] && break
         ((timsec--))
     done
-    export promptIn
     echo ""
     set -e
 }
