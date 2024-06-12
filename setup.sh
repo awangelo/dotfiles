@@ -70,7 +70,7 @@ grub() {
         echo -e "$(lsblk)"
         prompt_timer 60 "Is this the correct EFI partition? [Y/n]"
         OPT=${promptIn,,}
-        if [ "$OPT" = "y" ]; then
+        if [ "${OPT}" = "y" ]; then
             sudo mkdir -p /mnt/win
             sudo mount "$EFI_PART" /mnt/win
         else
@@ -79,7 +79,7 @@ grub() {
     else
         prompt_timer 60 "Windows EFI partition not found, continue anyway? [Y/n]"
         OPT=${promptIn,,}
-        if [ "$OPT" != "y" ]; then
+        if [ "${OPT}" != "y" ]; then
             exit 1
         fi
     fi
