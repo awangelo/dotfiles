@@ -8,24 +8,40 @@ SUC="\033[38;5;123m"
 
 trap 'printf "${ERR}[!] Error in function %s at line %d${NORM}\n" "${FUNCNAME[0]}" "${BASH_LINENO[0]}"; exit 1' ERR EXIT INT TERM HUP
 
+prompt_timer() {
+    set +e
+    unset promptIn
+    local timsec=$1
+    local msg=$2
+    while [[ ${timsec} -ge 0 ]]; do
+        echo -ne "\r :: ${msg} (${timsec}s) : "
+        read -t 1 -n 1 promptIn
+        [ $? -eq 0 ] && break
+        ((timsec--))
+    done
+    export promptIn
+    echo ""
+    set -e
+}
+
 pre() {
     THREADS=$(nproc)
-#pacman
+    # Cores, downloads paralelos e list em tabela
     sudo sed -i "/^#Color/c\Color\nILoveCandy
     /^#VerbosePkgLists/c\VerbosePkgLists
     /^#ParallelDownloads/c\ParallelDownloads = 5" /etc/pacman.conf
     sudo sed -i '/^#\[multilib\]/,+1 s/^#//' /etc/pacman.conf
 
     echo -e "${SUC}[+] Done with pacman${NORM}"
-#makepkg
+    # Numero maximo de threads para o makepkg e compressao
     sudo sed -i "/^#MAKEFLAGS=\"-j2\"/c\MAKEFLAGS=\"-j$THREADS\"" /etc/makepkg.conf
     sudo sed -i "s|^COMPRESSXZ=(xz -c -z -)|COMPRESSXZ=(xz -c -z --threads=$THREADS -)|" /etc/makepkg.conf
     sudo sed -i "s|^COMPRESSZST=(zstd -c -z -)|COMPRESSZST=(zstd -c -z --threads=$THREADS -)|" /etc/makepkg.conf
     echo -e "${SUC}[+] Done with makepkg${NORM}"
-#autologin
+    # Autologin no tty1 para o usuario atual
     sudo mkdir -p /etc/systemd/system/getty@tty1.service.d/
-    echo -e "[Service]\nExecStart=\nExecStart=-/usr/bin/agetty --autologin $(whoami) --noclear %I $TERM" \
-    | sudo tee /etc/systemd/system/getty@tty1.service.d/override.conf
+    echo -e "[Service]\nExecStart=\nExecStart=-/usr/bin/agetty --autologin $(whoami) --noclear %I $TERM" |
+        sudo tee /etc/systemd/system/getty@tty1.service.d/override.conf
     echo -e "${SUC}[+] Done with tty autologin${NORM}"
 }
 
@@ -35,35 +51,40 @@ aur() {
     echo -e "${SUC}[+] Done with yay${NORM}"
 }
 
-installpkg() {
+install_pkgs() {
     sudo pacman -S --noconfirm --needed \
-        base-devel os-prober curl wget 
+        base-devel os-prober curl wget
 }
 
 grub() {
+    # Grub sem timeout para exibir apenas pressionando shift
     sudo sed -i '/GRUB_TIMEOUT=/c\GRUB_TIMEOUT=0' /etc/default/grub
     sudo sed -i '/GRUB_TIMEOUT_STYLE=/c\GRUB_TIMEOUT_STYLE=hidden' /etc/default/grub
     sudo sed -i '/GRUB_DISABLE_OS_PROBER=/c\GRUB_DISABLE_OS_PROBER=false' /etc/default/grub
 
+    # Busca por uma partição EFI do windows em todos os discos
     EFI_PART=$(sudo blkid | grep -i "EFI system" | awk '{print $1}' | cut -d ':' -f 1)
 
+    # Se encontrar, a monta e executa os-prober para adicionar o windows ao grub
     if [ -n "$EFI_PART" ]; then
         echo -e "${SUC}[+] Found Windows EFI partition at $EFI_PART${NORM}"
         echo -e "$(lsblk)"
-        echo -e "${SUC}[+] Is this the correct partition? [Y/n]${NORM} "
-        read -n 1 response
-        echo
-        if [ -z "$response" ] || [ "$response" = "Y" ] || [ "$response" = "y" ]; then
+        prompt_timer 60 "Is this the correct EFI partition? [Y/n]"
+        OPT=${promptIn,,}
+        if [ "$OPT" = "y" ]; then
             sudo mkdir -p /mnt/win
             sudo mount "$EFI_PART" /mnt/win
         else
-            echo "Operation cancelled by user."
             exit 1
         fi
     else
-        echo -e "${ERR}[!] Could not find Windows EFI partition${NORM}"
-        exit 1
+        prompt_timer 60 "Windows EFI partition not found, continue anyway? [Y/n]"
+        OPT=${promptIn,,}
+        if [ "$OPT" != "y" ]; then
+            exit 1
+        fi
     fi
+
     sudo os-prober
 
     sudo grub-mkconfig -o /boot/grub/grub.cfg
@@ -83,8 +104,8 @@ nvidia() {
     lsmod | grep nvidia
 
     nvidia-smi
-    " > ~/awarch/check_drivers.sh
-    chmod +x ~/awarch/check_drivers.sh
+    " >$HOME/awarch/check_drivers.sh
+    chmod +x $HOME/awarch/check_drivers.sh
     echo -e "${SUC}[+] Done with NVIDIA drivers${NORM}"
 }
 
@@ -97,7 +118,7 @@ main() {
     echo -e "${WARN}[*] Installing aur...${NORM}"
     aur
     echo -e "${WARN}[*] Installing packages...${NORM}"
-    installpkg
+    install_pkgs
     echo -e "${WARN}[*] Configuring GRUB...${NORM}"
     grub
     echo -e "${WARN}[*] Installing NVIDIA drivers...${NORM}"
@@ -110,7 +131,7 @@ main() {
     echo -e "${SUC}[+] Script is done, you should reboot now.${NORM}"
     echo -e "${WARN}[*] Run check_drivers.sh on ~/awarch to check drivers${NORM}"
     echo -e "${WARN}[*] If nvidia is loaded, run rice.sh on ~/awarch${NORM}"
-    chmod +x ~/awarch/rice.sh
+    chmod +x $HOME/awarch/rice.sh
 
     sudo umount /mnt/win || echo -e "${ERR}[!] Could not unmount Windows EFI partition${NORM}"
 }
