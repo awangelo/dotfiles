@@ -48,12 +48,12 @@ grub() {
     sudo sed -i '/GRUB_TIMEOUT_STYLE=/c\GRUB_TIMEOUT_STYLE=hidden' /etc/default/grub
     sudo sed -i '/GRUB_DISABLE_OS_PROBER=/c\GRUB_DISABLE_OS_PROBER=false' /etc/default/grub
 
-    EFI_PART=$(sudo blkid | grep -i "EFI system" | awk '{print $1}' | cut -d '/' -f 3 | cut -d ':' -f 1)
+    EFI_PART=$(sudo blkid | grep -i "EFI system" | awk '{print $1}' | cut -d ':' -f 1)
 
     if [ -n "$EFI_PART" ]; then
         echo -e "${SUC}[+]: Found Windows EFI partition at $EFI_PART${NORM}"
-        echo -n "${SUC}[+]: Is this the correct partition? [Y/n]${NORM} "
         echo -e "$(lsblk)"
+        echo -e "${SUC}[+]: Is this the correct partition? [Y/n]${NORM} "
         read -n 1 response
         echo
         if [ -z "$response" ] || [ "$response" = "Y" ] || [ "$response" = "y" ]; then
