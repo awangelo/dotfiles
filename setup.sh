@@ -71,8 +71,8 @@ grub() {
         if [ "$OPT" != "y" ]; then
             exit 1
         fi
-    else
-    
+    fi
+
     echo -e "${SUC}[+] Found Windows EFI partition at $EFI_PART${NORM}"
     echo -e "$(lsblk)"
     prompt_timer 60 "Is this the correct EFI partition? [Y/n]"
