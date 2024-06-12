@@ -78,22 +78,18 @@ grub() {
 nvidia() {
     sudo pacman -S --noconfirm --needed nvidia nvidia-utils nvidia-settings
     echo -e "${WARN}[*] Creating check_drivers.sh script...${NORM}"
-    echo "#!/bin/bash
+    echo "#!/usr/bin/env bash
+
+    echo 'You should NOT see nouveau in the output below:'
 
     echo 'Checking if Nouveau is unloaded...'
-    if lsmod | grep -q nouveau; then
-        echo 'Nouveau is loaded!'
-    else
-        echo 'Nouveau is not loaded.'
-    fi
-    echo 'Checking if Nvidia is loaded...'
+    lsmod | grep -q nouveau; then
     if lsmod | grep -q nvidia; then
         echo 'Nvidia is loaded!'
     else
         echo 'Nvidia is not loaded.'
     fi
 
-    echo 'Checking Nvidia driver version...'
     nvidia-smi
     " > ~/check_drivers.sh
     chmod +x ~/check_drivers.sh
@@ -111,8 +107,10 @@ main() {
     grub
     echo -e "${WARN}[*] Installing NVIDIA drivers...${NORM}"
     nvidia
-    echo -e "${WARN}[*] Execute check_drivers.sh after reboot to check the drivers.${NORM}"
     echo -e "${SUC}[+] Script is done, you should reboot now.${NORM}"
+    echo -e "${WARN}[*] Execute check_drivers.sh on ~ to check drivers${NORM}"
+
+    sudo umount /mnt/win || echo -e "${ERR}[!] Could not unmount Windows EFI partition${NORM}"
 }
 
 main
