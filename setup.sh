@@ -61,7 +61,7 @@ grub() {
     sudo sed -i '/GRUB_DISABLE_OS_PROBER=/c\GRUB_DISABLE_OS_PROBER=false' /etc/default/grub
 
     # Busca por uma partição EFI do windows em todos os discos
-    EFI_PART=$(sudo blkid | grep -i "EFI system" | awk '{print $1}' | cut -d ':' -f 1)
+    EFI_PART=$(sudo blkid | grep -i "EFI system" | awk '{print $1}' | cut -d ':' -f 1 || echo "")
 
     # Se encontrar, a monta e executa os-prober para adicionar o windows ao grub
     if [ -n "$EFI_PART" ]; then
