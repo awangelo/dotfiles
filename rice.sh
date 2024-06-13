@@ -48,7 +48,7 @@ query() {
                 echo -e "${ERR}[!] ${pkg} not found${NORM}"
             fi
         fi
-    done < <(cat rice.txt)
+    done < <(cat pkgs.lst)
 }
 
 install() {
