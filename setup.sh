@@ -124,7 +124,7 @@ main() {
     echo -e "${WARN}[*] If nvidia is loaded, run rice.sh on ~/awarch${NORM}"
     chmod +x $HOME/awarch/rice.sh
 
-    sudo umount /mnt/win || echo -e "${ERR}[!] Could not unmount Windows EFI partition${NORM}"
+    sudo umount /mnt/win > /dev/null 2>&1 || true
 }
 
 main
