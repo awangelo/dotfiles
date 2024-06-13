@@ -61,6 +61,10 @@ install() {
     fi
 }
 
+config() {
+    
+}
+
 main() {
     check_setup
     query
