@@ -20,6 +20,7 @@ prompt_timer() {
         ((timsec--))
     done
     echo ""
+    export OPT=$promptIn
     set -e
 }
 
@@ -55,6 +56,7 @@ install_pkgs() {
 }
 
 grub() {
+    
     # Grub sem timeout para exibir apenas pressionando shift
     sudo sed -i '/GRUB_TIMEOUT=/c\GRUB_TIMEOUT=0' /etc/default/grub
     sudo sed -i '/GRUB_TIMEOUT_STYLE=/c\GRUB_TIMEOUT_STYLE=hidden' /etc/default/grub
