@@ -20,7 +20,6 @@ prompt_timer() {
         ((timsec--))
     done
     echo ""
-    export OPT=$promptIn
     set -e
 }
 
@@ -56,7 +55,6 @@ install_pkgs() {
 }
 
 grub() {
-    
     # Grub sem timeout para exibir apenas pressionando shift
     sudo sed -i '/GRUB_TIMEOUT=/c\GRUB_TIMEOUT=0' /etc/default/grub
     sudo sed -i '/GRUB_TIMEOUT_STYLE=/c\GRUB_TIMEOUT_STYLE=hidden' /etc/default/grub
@@ -66,31 +64,24 @@ grub() {
     EFI_PART=$(sudo blkid | grep -i "EFI system" | awk '{print $1}' | cut -d ':' -f 1)
 
     # Se encontrar, a monta e executa os-prober para adicionar o windows ao grub
-    if [ -z "$EFI_PART" ]; then
-        prompt_timer 60 "Windows EFI partition not found, continue anyway? [Y/n]"
+    if [ -n "$EFI_PART" ]; then
+        echo -e "${SUC}[+] Found Windows EFI partition at $EFI_PART${NORM}"
+        echo -e "$(lsblk)"
+        prompt_timer 60 "Is this the correct EFI partition? [Y/n]"
         OPT=${promptIn,,}
-        if [ "$OPT" != "y" ]; then
-            exit 1
+        if [ "$OPT" = "y" ]; then
+            sudo mkdir -p /mnt/win
+            sudo mount "$EFI_PART" /mnt/win
+            sudo os-prober
+            sudo grub-mkconfig -o /boot/grub/grub.cfg
+        else
+            echo -e "${WARN}[-] Skipping Windows EFI partition mount and os-prober execution${NORM}"
         fi
-    fi
-
-    echo -e "${SUC}[+] Found Windows EFI partition at $EFI_PART${NORM}"
-    echo -e "$(lsblk)"
-    prompt_timer 60 "Is this the correct EFI partition? [Y/n]"
-    OPT=${promptIn,,}
-    if [ "$OPT" = "y" ]; then
-        sudo mkdir -p /mnt/win
-        sudo mount "$EFI_PART" /mnt/win
     else
-        exit 1
+        echo -e "${WARN}[-] Windows EFI partition not found, skipping os-prober execution${NORM}"
     fi
 
-    sudo os-prober
-
-    sudo grub-mkconfig -o /boot/grub/grub.cfg
     echo -e "${SUC}[+] Done with grub${NORM}"
-
-    sudo umount /mnt/win
 }
 
 nvidia() {
