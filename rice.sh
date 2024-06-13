@@ -12,7 +12,7 @@ archPkg=()
 aurPkg=()
 
 installed_pkg() {
-    if pacman -Qi "${PkgIn}" &>/dev/null; then
+    if pacman -Qi "$1" &>/dev/null; then
         return 0
     else
         return 1

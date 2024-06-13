@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
-set -euo pipefail
+set -eu pipefail
 
 NORM="\033[0m"
 WARN="\033[38;5;177m"
 ERR="\033[31m"
 SUC="\033[38;5;123m"
 
-trap 'printf "${ERR}[!] Error in function %s at line %d${NORM}\n" "${FUNCNAME[0]}" "${BASH_LINENO[0]}"; exit 1' ERR EXIT INT TERM HUP
+trap 'printf "${ERR}[!] Error in function %s at line %d${NORM}\n" "${FUNCNAME[0]}" "${BASH_LINENO[0]}"; exit 1' ERR INT TERM HUP
 
 prompt_timer() {
     set +e
@@ -15,8 +15,9 @@ prompt_timer() {
     local msg=$2
     while [[ ${timsec} -ge 0 ]]; do
         echo -ne "\r :: ${msg} (${timsec}s) : "
-        read -t 1 -n 1 promptIn
-        [ $? -eq 0 ] && break
+        if read -t 1 -n 1 -r promptIn; then
+            break
+        fi
         ((timsec--))
     done
     echo ""
@@ -67,7 +68,7 @@ grub() {
     if [ -n "$EFI_PART" ]; then
         echo -e "${SUC}[+] Found Windows EFI partition at $EFI_PART${NORM}"
         echo -e "$(lsblk)"
-        prompt_timer 60 "Is this the correct EFI partition? [Y/n]"
+        prompt_timer 60 "Is this the correct EFI partition? [y/N]"
         OPT=${promptIn,,}
         if [ "$OPT" = "y" ]; then
             sudo mkdir -p /mnt/win
@@ -95,8 +96,8 @@ nvidia() {
     lsmod | grep nvidia
 
     nvidia-smi
-    " >$HOME/awarch/check_drivers.sh
-    chmod +x $HOME/awarch/check_drivers.sh
+    " >"$HOME"/awarch/check_drivers.sh
+    chmod +x "$HOME"/awarch/check_drivers.sh
     echo -e "${SUC}[+] Done with NVIDIA drivers${NORM}"
 }
 
@@ -122,7 +123,7 @@ main() {
     echo -e "${SUC}[+] Script is done, you should reboot now.${NORM}"
     echo -e "${WARN}[*] Run check_drivers.sh on ~/awarch to check drivers${NORM}"
     echo -e "${WARN}[*] If nvidia is loaded, run rice.sh on ~/awarch${NORM}"
-    chmod +x $HOME/awarch/rice.sh
+    chmod +x "$HOME"/awarch/rice.sh
 
     sudo umount /mnt/win > /dev/null 2>&1 || true
 }
