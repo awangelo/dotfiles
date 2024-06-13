@@ -73,7 +73,6 @@ grub() {
             sudo mkdir -p /mnt/win
             sudo mount "$EFI_PART" /mnt/win
             sudo os-prober
-            sudo grub-mkconfig -o /boot/grub/grub.cfg
         else
             echo -e "${WARN}[-] Skipping Windows EFI partition mount and os-prober execution${NORM}"
         fi
@@ -81,6 +80,7 @@ grub() {
         echo -e "${WARN}[-] Windows EFI partition not found, skipping os-prober execution${NORM}"
     fi
 
+    sudo grub-mkconfig -o /boot/grub/grub.cfg
     echo -e "${SUC}[+] Done with grub${NORM}"
 }
 
