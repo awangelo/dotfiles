@@ -1,11 +1,13 @@
 *.o
 *.out
 *.exe
-
-Makefile~
-
-obj/
+*.obj
 *.log
 
+*.rej*
+*.orig*
+*.bak*
+
+obj/
 .vscode/
 
