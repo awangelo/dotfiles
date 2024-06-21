@@ -67,11 +67,24 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *clipmenucmd[] = { "clipmenu", NULL };
+static const char *screenshot_full[] = {
+    "sh", "-c",
+    "FILE=$(mktemp ~/screenshots/XXXXXXXX.png) && maim $FILE && xclip -selection clipboard -t image/png -i $FILE && echo -n $FILE",
+    NULL
+};
+static const char *screenshot_sel[] = {
+    "sh", "-c",
+    "FILE=$(mktemp ~/screenshots/XXXXXXXX.png) && maim -s $FILE && xclip -selection clipboard -t image/png -i $FILE && echo -n $FILE",
+    NULL
+};
+
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,					    XK_v,      spawn,          {.v = clipmenucmd },
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
+	{ MODKEY,					    XK_v,      spawn,          {.v = clipmenucmd } },
+    { 0,                            XK_Print,  spawn,          {.v = screenshot_sel } },
+    { ShiftMask,                    XK_Print,  spawn,          {.v = screenshot_full } },
 	{ MODKEY,             	        XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = +1 } },
