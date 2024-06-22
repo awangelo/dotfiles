@@ -2,8 +2,9 @@
 
 ## Screenshots
 
-![terminal](https://i.postimg.cc/sgntBTNR/JJK3bK.png)
-![clipmenu](https://i.postimg.cc/QNTs2ZnK/0Wku3A.png)
+![terminal](https://i.postimg.cc/ZRps4qRV/PeEleoNz.png)
+![clipmenu](https://i.postimg.cc/PqBVgDtC/BRqhKBGD.png)
+![todo](https://i.postimg.cc/8cGK5VfD/m6QHRyRn.png)
 
 ## Specifications
 
@@ -27,7 +28,7 @@
 
 ### TODO
 
-- dwmblocks
+- ~~dwmblocks~~
 - theme generation
 - file search
 - vim
