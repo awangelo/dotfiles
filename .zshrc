@@ -37,16 +37,19 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias .3='cd ../../..'
 
-alias ls='eza --icons'
-alias la='eza --icons -a'
-alias ll='eza --icons -la'
-alias lf='eza --icons -la --group-directories-first'
+alias ls='eza --icons=always'
+alias la='eza --icons=always -a'
+alias ll='eza --icons=always -la'
+alias lf='eza --icons=always -la --group-directories-first'
 alias ld='eza -aD'
-alias lt='eza --icons -aT'
+alias lt='eza -aT'
 
 alias s=sudo
 alias cclean='sudo pacman -Scc; yay -Scc'
 alias mkdir='mkdir -p'
+alias br+='brightnessctl s +10%;'
+alias br-='brightnessctl s 10%-'
+
 
 r() {
     length=${1:-32}
