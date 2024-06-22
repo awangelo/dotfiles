@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-FILE=$(mktemp ~/screenshots/XXXXXXXX.png)
+FILE=$(mktemp $HOME/screenshots/XXXXXXXX.png)
 
 maim $FILE && xclip -selection clipboard -t image/png -i $FILE
 
