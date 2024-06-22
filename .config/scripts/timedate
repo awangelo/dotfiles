@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+data=$(date "+%B %d")
+hora=$(date "+%I:%M %p")
+
+echo "$data $hora"
