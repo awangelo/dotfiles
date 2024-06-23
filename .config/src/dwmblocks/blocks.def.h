@@ -2,6 +2,7 @@
 static const Block blocks[] = {
 	/*Icon*/	/*Command*/		/*Update Interval*/	/*Update Signal*/
 	{"", "sh $HOME/.config/scripts/mem",	 	5,		0,},
+	{"", "sh $HOME/.config/scripts/volume", 	1,		0,},
 	{"", "sh $HOME/.config/scripts/battery",	5,		0,},
 	{"", "sh $HOME/.config/scripts/timedate", 	1,		0,},
 };

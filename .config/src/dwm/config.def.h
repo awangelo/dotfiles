@@ -69,9 +69,9 @@ static const char *termcmd[]  = { "st", NULL };
 static const char *clipmenucmd[] = { "clipmenu", NULL };
 static const char *screenshot_full[] = { "sh", "-c", "~/.config/scripts/ss_full", NULL };
 static const char *screenshot_sel[] = { "sh", "-c", "~/.config/scripts/ss_sel", NULL };
-static const char *volume_up[] = { "sh", "-c", "pactl set-sink-volume @DEFAULT_SINK@ +5%", NULL };
-static const char *volume_down[] = { "sh", "-c", "pactl set-sink-volume @DEFAULT_SINK@ -5%", NULL };
-static const char *volume_mute[] = { "sh", "-c", "pactl set-sink-mute @DEFAULT_SINK@ toggle", NULL };
+static const char *volume_up[] = { "sh", "-c", "pactl set-sink-volume @DEFAULT_SINK@ +5%; pkill -RTMIN+1 dwmblocks", NULL };
+static const char *volume_down[] = { "sh", "-c", "pactl set-sink-volume @DEFAULT_SINK@ -5%; pkill -RTMIN+1 dwmblocks", NULL };
+static const char *volume_mute[] = { "sh", "-c", "pactl set-sink-mute @DEFAULT_SINK@ toggle; pkill -RTMIN+1 dwmblocks", NULL };
 static const char *todocmd[] = { "sh", "-c", "~/.config/scripts/todo", NULL };
 
 static const Key keys[] = {
