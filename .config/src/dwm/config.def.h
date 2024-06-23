@@ -69,6 +69,9 @@ static const char *termcmd[]  = { "st", NULL };
 static const char *clipmenucmd[] = { "clipmenu", NULL };
 static const char *screenshot_full[] = { "sh", "-c", "~/.config/scripts/ss_full", NULL };
 static const char *screenshot_sel[] = { "sh", "-c", "~/.config/scripts/ss_sel", NULL };
+static const char *volume_up[] = { "sh", "-c", "pactl set-sink-volume @DEFAULT_SINK@ +5%", NULL };
+static const char *volume_down[] = { "sh", "-c", "pactl set-sink-volume @DEFAULT_SINK@ -5%", NULL };
+static const char *volume_mute[] = { "sh", "-c", "pactl set-sink-mute @DEFAULT_SINK@ toggle", NULL };
 static const char *todocmd[] = { "sh", "-c", "~/.config/scripts/todo", NULL };
 
 static const Key keys[] = {
@@ -77,6 +80,9 @@ static const Key keys[] = {
 	{ MODKEY,					    XK_v,      spawn,          {.v = clipmenucmd } },
     { 0,                            XK_Print,  spawn,          {.v = screenshot_sel } },
     { ShiftMask,                    XK_Print,  spawn,          {.v = screenshot_full } },
+    { 0,              XF86XK_AudioRaiseVolume, spawn,          {.v = volume_up } },
+    { 0,              XF86XK_AudioLowerVolume, spawn,		   {.v = volume_down } },
+    { 0,                     XF86XK_AudioMute, spawn,	       {.v = volume_mute } },
 	{ MODKEY,             	        XK_a,      spawn,          {.v = todocmd } },
 	{ MODKEY,             	        XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
