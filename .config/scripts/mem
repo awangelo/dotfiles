@@ -4,4 +4,4 @@ mem_usada=$(free -h | awk '/^Mem:/ {print $3}')
 mem_total=$(free -h | awk '/^Mem:/ {print $2}')
 
 # Imprime a memória RAM usada e total
-echo "  $mem_usada / $mem_total"
+echo " 🧠 $mem_usada/$mem_total"
