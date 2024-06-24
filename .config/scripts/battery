@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
 
-# Loop through all attached batteries and format the info
 for battery in /sys/class/power_supply/BAT?*; do
-    # If non-first battery, print a space separator.
     [ -n "${capacity+x}" ] && printf " "
-    # Sets up the status and capacity
+    capacity="$(cat "$battery/capacity" 2>&1)"
+
     case "$(cat "$battery/status" 2>&1)" in
         "Full") status="🔋 " ;;
         "Discharging") status="🪫 " ;;
@@ -13,9 +12,11 @@ for battery in /sys/class/power_supply/BAT?*; do
         "Unknown") status="❓ " ;;
         *) exit 1 ;;
     esac
-    capacity="$(cat "$battery/capacity" 2>&1)"
-    # Will make a warn variable if discharging and low
+    
+    if [ "$capacity" -ge 50 ]; then
+        status="🔋 "
+    fi
     [ "$status" = "🪫 " ] && [ "$capacity" -le 25 ] && status="❗ "
-    # Prints the info
+    
     printf "%s%s%d%%" "$warn" "$status" "$capacity"; unset warn
 done && printf "\\n"
