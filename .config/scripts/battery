@@ -12,11 +12,12 @@ for battery in /sys/class/power_supply/BAT?*; do
         "Unknown") status="❓ " ;;
         *) exit 1 ;;
     esac
-    
-    if [ "$capacity" -ge 50 ]; then
+
+    if [ "$status" = "🪫 " ] && [ "$capacity" -le 25 ]; then
+        status="❗ "
+    elif [ "$status" != "🌀 " ] && [ "$capacity" -ge 50 ]; then
         status="🔋 "
     fi
-    [ "$status" = "🪫 " ] && [ "$capacity" -le 25 ] && status="❗ "
-    
+
     printf "%s%s%d%%" "$warn" "$status" "$capacity"; unset warn
 done && printf "\\n"
