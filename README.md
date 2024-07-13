@@ -3,7 +3,7 @@
 ## Screenshots
 
 ![1](https://i.postimg.cc/5NvzBdtc/bAwGGS3y.png)
-![2](https://i.postimg.cc/vZsVXq14/JvCrX5NH.png)
+![2](https://i.postimg.cc/hcJ1DNc1/JvCrX5NH.png)
 ![3](https://i.postimg.cc/nr9FtJWn/6D8EwP0o.png)
 
 ## Specifications
