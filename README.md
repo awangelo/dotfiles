@@ -2,33 +2,27 @@
 
 ## Screenshots
 
-![terminal](https://i.postimg.cc/ZRps4qRV/PeEleoNz.png)
-![clipmenu](https://i.postimg.cc/PqBVgDtC/BRqhKBGD.png)
-![todo](https://i.postimg.cc/8cGK5VfD/m6QHRyRn.png)
+![1](https://i.postimg.cc/5NvzBdtc/bAwGGS3y.png)
+![2](https://i.postimg.cc/vZsVXq14/JvCrX5NH.png)
+![3](https://i.postimg.cc/nr9FtJWn/6D8EwP0o.png)
 
 ## Specifications
 
 - **OS**: [Arch](https://archlinux.org/)
 - **WM**: [dwm](https://dwm.suckless.org/)
+- **Bar**: [slstatus](https://tools.suckless.org/slstatus/)
 - **Terminal**: [st](https://st.suckless.org/)
 - **Shell**: [zsh](https://www.zsh.org/)
 - **Launcher**: [dmenu](https://tools.suckless.org/dmenu/)
-- **Clipboard**: [clipmenu](https://github.com/cdown/clipmenu)
 - **Screenshot**: [maim](https://github.com/naelstrof/maim)
 - **Wallpaper**: [feh](https://feh.finalrewind.org/)
 - **Fonts**: JetBrains Mono, NotoFont
 
 ## Configuration Files
 
-- **dwm**: `~/.config/src/dwm/config.def.h` (delete config.h before compiling)
-- **st**: `~/.config/src/st/config.def.h` (delete config.h before compiling)
+- **dwm**: `~/src/dwm/config.def.h`
+- **st**: `~/src/st/config.def.h`
+- **slstatus**: `~/src/slstatus/config.def.h`
 - **picom**: `~/.config/picom/picom.conf`
 - **zsh**: `~/.zshrc`
-- **wallpaper**: `~/wallpapers`
-
-### TODO
-
-- ~~dwmblocks~~
-- theme generation
-- file search
-- vim
+- **wallpaper**: `~/.config/wallpapers`

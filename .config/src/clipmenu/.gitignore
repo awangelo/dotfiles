@@ -1,7 +1,0 @@
-src/clipmenud
-src/clipctl
-src/clipdel
-src/clipmenu
-src/clipserve
-tests/test
-*.o

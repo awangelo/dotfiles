@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-data=$(date "+%m/%d")
-hora=$(date "+%I:%M %p")
-
-echo "🗓 $data - $hora"

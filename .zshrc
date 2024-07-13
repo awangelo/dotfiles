@@ -1,38 +1,32 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=2000
+SAVEHIST=2000
+unsetopt beep
+bindkey -e
+# End of lines configured by zsh-newuser-install
+# The following lines were added by compinstall
+zstyle :compinstall filename '/home/angelo/.zshrc'
 
-# Path to your Oh My Zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
 
-HISTFILE=~/.zsh_history
+# Selection
+autoload -U select-word-style
+select-word-style bash
 
-# "random" then echo $RANDOM_THEME
-ZSH_THEME="robbyrussell"
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+bindkey '^[[1;5C' forward-word
+bindkey '^[[1;5D' backward-word
+bindkey '^[[3~' delete-char
 
-# DISABLE_AUTO_TITLE="true"
-# ENABLE_CORRECTION="true"
+# Prompt/Plugins
+eval "$(starship init zsh)"
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/plugins/zsh-shift-select/zsh-shift-select.plugin.zsh
 
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-plugins=(git zsh-syntax-highlighting zsh-autosuggestions zsh-shift-select)
-fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
-
-export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
-source $ZSH/oh-my-zsh.sh
-
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
+# Alias
 alias ..='cd ..'
 alias ...='cd ../..'
 alias .3='cd ../../..'
@@ -40,8 +34,7 @@ alias .3='cd ../../..'
 alias ls='eza --icons=always'
 alias la='eza --icons=always -a'
 alias ll='eza --icons=always -la'
-alias lf='eza --icons=always -la --group-directories-first'
-alias ld='eza -aD'
+alias ld='eza --icons=always -la --group-directories-first'
 alias lt='eza -aT'
 
 alias s=sudo
@@ -50,8 +43,12 @@ alias mkdir='mkdir -p'
 alias br+='brightnessctl s +10%;'
 alias br-='brightnessctl s 10%-'
 
+alias fetch='neofetch --config ~/.config/neofetch/minha.conf'
+alias cmatrix='cmatrix -C magenta'
 
 r() {
-    length=${1:-32}
-    head /dev/urandom | tr -dc A-Za-z0-9 | head -c "$length" ; echo ''
+    len=${1:-32}
+    head /dev/urandom | tr -dc A-Zaa-z0-9 | head -c "$len" ; echo ''
 }
+
+export GOPATH=/usr/local/go

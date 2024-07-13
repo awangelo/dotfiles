@@ -1,5 +1,5 @@
 picom -b --config ~/.config/picom/picom.conf &
-find ~/.config/wallpapers/ -type f | shuf -n 1 | xargs feh --bg-fill &
+feh --bg-fill ~/.config/wallpapers/milk.png &
 exec dwm &
-dwmblocks &
-clipmenud 
+slstatus &
+clipmenud
