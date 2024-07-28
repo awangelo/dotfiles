@@ -25,6 +25,8 @@ eval "$(starship init zsh)"
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-shift-select/zsh-shift-select.plugin.zsh
+eval "$(zoxide init --cmd cd zsh)"
+source <(fzf --zsh)
 
 # Alias
 alias ..='cd ..'
@@ -45,6 +47,8 @@ alias br-='brightnessctl s 10%-'
 
 alias fetch='neofetch --config ~/.config/neofetch/minha.conf'
 alias cmatrix='cmatrix -C magenta'
+alias se="fzf --bind 'enter:become(vim {})'"
+alias sd='cd $(ls -d **/*(/D) | fzf --exact | cut -c 5-)'
 
 r() {
     len=${1:-32}
