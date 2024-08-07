@@ -65,10 +65,11 @@ static const char unknown_str[] = "n/a";
  */
 static const struct arg args[] = {
 	/* function          format         argument */
-	{ cpu_perc,         "   %s%% ",              NULL },
-	{ ram_perc,         "|   %s%% ",               NULL },
-        { battery_perc,     "|   %s%% ",             "BAT1" },
-	{ run_command,      "| 󰕾  %s%% ",      "pactl get-sink-volume @DEFAULT_SINK@ | awk '/Volume:/ {print $5}' | head -1 | tr -d '%'" },
+	{ cpu_perc,         "   %s%% ",         NULL },
+	{ ram_perc,         "|   %s%% ",        NULL },
+	{ battery_state,     "| %s",	        "BAT1" },
+	{ battery_perc,     "  %s%% ",         "BAT1" },
+	{ run_command,      "| 󰕾  %s%% ",       "pactl get-sink-volume @DEFAULT_SINK@ | awk '/Volume:/ {print $5}' | head -1 | tr -d '%'" },
 	{ datetime,         "| 󰸗  %s ",         "%y/%m/%d" },
-	{ datetime,         "- %s",              "%I:%M:%S %p"}
+	{ datetime,         "- %s",             "%I:%M:%S %p"}
 };
