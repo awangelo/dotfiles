@@ -42,8 +42,6 @@ alias lt='eza -aT'
 alias s=sudo
 alias cclean='sudo pacman -Scc; yay -Scc'
 alias mkdir='mkdir -p'
-alias br+='brightnessctl s +10%;'
-alias br-='brightnessctl s 10%-'
 
 alias fetch='neofetch --config ~/.config/neofetch/minha.conf'
 alias cmatrix='cmatrix -C magenta'
@@ -54,5 +52,3 @@ r() {
     len=${1:-32}
     head /dev/urandom | tr -dc A-Zaa-z0-9 | head -c "$len" ; echo ''
 }
-
-export GOPATH=/usr/local/go
