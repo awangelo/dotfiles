@@ -1,38 +1,4 @@
-/* See LICENSE file for copyright and license details. */
-
-/* interval between updates (in ms) */
-const unsigned int interval = 1000;
-
-/* text to show if no value can be retrieved */
-static const char unknown_str[] = "n/a";
-
-/* maximum output string length */
-#define MAXLEN 2048
-
-/*
- * function            description                     argument (example)
- *
- * battery_perc        battery percentage              battery name (BAT0)
- *                                                     NULL on OpenBSD/FreeBSD
- * battery_remaining   battery remaining HH:MM         battery name (BAT0)
- *                                                     NULL on OpenBSD/FreeBSD
- * battery_state       battery charging state          battery name (BAT0)
- *                                                     NULL on OpenBSD/FreeBSD
- * cat                 read arbitrary file             path
- * cpu_freq            cpu frequency in MHz            NULL
- * cpu_perc            cpu usage in percent            NULL
- * datetime            date and time                   format string (%F %T)
- * disk_free           free disk space in GB           mountpoint path (/)
- * disk_perc           disk usage in percent           mountpoint path (/)
- * disk_total          total disk space in GB          mountpoint path (/)
- * disk_used           used disk space in GB           mountpoint path (/)
- * entropy             available entropy               NULL
- * gid                 GID of current user             NULL
- * hostname            hostname                        NULL
- * ipv4                IPv4 address                    interface name (eth0)
- * ipv6                IPv6 address                    interface name (eth0)
- * kernel_release      `uname -r`                      NULL
- * keyboard_indicators caps/num lock indicators        format string (c?n?)
+board_indicators caps/num lock indicators        format string (c?n?)
  *                                                     see keyboard_indicators.c
  * keymap              layout (variant) of current     NULL
  *                     keymap
@@ -64,12 +30,12 @@ static const char unknown_str[] = "n/a";
  * wifi_perc           WiFi signal in percent          interface name (wlan0)
  */
 static const struct arg args[] = {
-	/* function          format         argument */
-	{ cpu_perc,         "   %s%% ",         NULL },
-	{ ram_perc,         "|   %s%% ",        NULL },
-	{ battery_state,     "| %s",	        "BAT1" },
-	{ battery_perc,     "  %s%% ",         "BAT1" },
-	{ run_command,      "| 󰕾  %s%% ",       "pactl get-sink-volume @DEFAULT_SINK@ | awk '/Volume:/ {print $5}' | head -1 | tr -d '%'" },
-	{ datetime,         "| 󰸗  %s ",         "%y/%m/%d" },
-	{ datetime,         "- %s",             "%I:%M:%S %p"}
+    /* function          format         argument */
+    { cpu_perc,         "   %s%% ",         NULL },
+    { ram_used,         "|   %s ",        NULL },
+    { battery_state,     "| %s",            "BAT1" },
+    { battery_perc,     "  %s%% ",         "BAT1" },
+    { run_command,      "| 󰕾  %s%% ",       "pactl get-sink-volume @DEFAULT_SINK@ | awk '/Volume:/ {print $5}' | head -1 | tr -d '%'" },
+    { datetime,         "| 󰸗  %s ",         "%y/%m/%d" },
+    { datetime,         "- %s",             "%I:%M:%S %p"}
 };
