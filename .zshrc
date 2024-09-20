@@ -47,6 +47,7 @@ alias fetch='neofetch --config ~/.config/neofetch/minha.conf'
 alias cmatrix='cmatrix -C magenta'
 alias se="fzf --bind 'enter:become(vim {})'"
 alias sd='cd $(ls -d **/*(/D) | fzf --exact | cut -c 5-)'
+alias vim='nvim'
 
 r() {
     len=${1:-32}
