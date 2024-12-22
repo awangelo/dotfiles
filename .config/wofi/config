@@ -1,0 +1,9 @@
+show = drun
+prompt = shine
+
+width = 25%
+height = 35%
+
+allow_images = true
+hide_scroll = true
+no_actions = true

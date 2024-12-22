@@ -1,0 +1,20 @@
+window {
+    border-radius: 10px;
+    background-color: #1f1d2e;
+    font-size: 17px;
+}
+
+#input {
+    font-family: JetBrains Mono Nerd Font, monospace;
+    margin-bottom: 10px;
+}
+
+#outer-box {
+    margin: 5px;
+    border: 2px solid #1f1d2e;
+    background-color: #1f1d2e;
+}
+
+#text {
+    padding-left: 8px;
+}

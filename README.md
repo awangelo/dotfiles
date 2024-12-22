@@ -2,27 +2,18 @@
 
 ## Screenshots
 
-![1](https://i.postimg.cc/5NvzBdtc/bAwGGS3y.png)
-![2](https://i.postimg.cc/ydvByFGp/JvCrX5Nj.png)
-![3](https://i.postimg.cc/nr9FtJWn/6D8EwP0o.png)
+![1](https://files.catbox.moe/1r6v3x.png)
+![2](https://files.catbox.moe/atfwqf.png)
+![3](https://files.catbox.moe/fzibay.png)
 
 ## Specifications
 
 - **OS**: [Arch](https://archlinux.org/)
-- **WM**: [dwm](https://dwm.suckless.org/)
-- **Bar**: [slstatus](https://tools.suckless.org/slstatus/)
-- **Terminal**: [st](https://st.suckless.org/)
+- **WM**: [Hyprland](https://hyprland.org/)
+- **Bar**: [Waybar](https://github.com/Alexays/Waybar)
+- **Terminal**: [kitty](https://sw.kovidgoyal.net/kitty/)
 - **Shell**: [zsh](https://www.zsh.org/)
-- **Launcher**: [dmenu](https://tools.suckless.org/dmenu/)
-- **Screenshot**: [maim](https://github.com/naelstrof/maim)
+- **Launcher**: [wofi](https://hg.sr.ht/~scoopta/wofi)
 - **Wallpaper**: [feh](https://feh.finalrewind.org/)
-- **Fonts**: JetBrains Mono, NotoFont
-
-## Configuration Files
-
-- **dwm**: `~/src/dwm/config.def.h`
-- **st**: `~/src/st/config.def.h`
-- **slstatus**: `~/src/slstatus/config.def.h`
-- **picom**: `~/.config/picom/picom.conf`
-- **zsh**: `~/.zshrc`
-- **wallpaper**: `~/.config/wallpapers`
+- **Theme**: [Rosé Pine](https://rosepinetheme.com/)
+- **Fonts**: JetBrains Mono

@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-FILE=$(mktemp $HOME/Screenshots/XXXXXXXX.png)
-
-maim $FILE && xclip -selection clipboard -t image/png -i $FILE
-
-echo -n $FILE
