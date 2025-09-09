@@ -1,0 +1,45 @@
+[window]
+opacity = 1
+
+[window.padding]
+x = 6
+y = 3
+
+[font]
+size = 10
+
+#[font.normal]
+#family = "BigBlueTermPlus Nerd Font"
+
+[font.offset]
+x = 0
+y = -2
+
+[font.glyph_offset]
+x = 0
+y = -2
+
+[colors.primary]
+background = "0x000000"
+foreground = "0xc1c1c1"
+
+[colors.normal]
+black = "0x000000"
+red = "0xb16767"
+green = "0x4a6a6a"
+yellow = "0xe28854"
+blue = "0x5f81a5"
+magenta = "0x444444"
+cyan = "0x888888"
+white = "0xbbbbbb"
+
+[colors.bright]
+black = "0x636363"
+red = "0xdd9999"
+green = "0x5f8787"
+yellow = "0xefa173"
+blue = "0x95b0cc"
+magenta = "0x999999"
+cyan = "0xaaaaaa"
+white = "0xc5c8c6"
+
