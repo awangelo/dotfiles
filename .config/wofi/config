@@ -1,9 +1,14 @@
-show = drun
-prompt = shine
+mode=drun
 
-width = 25%
-height = 35%
+parse_actions=true
 
-allow_images = true
-hide_scroll = true
-no_actions = true
+location=center
+
+width=600
+height=500
+
+prompt=rawr
+
+allow_images=true
+hide_scroll=true
+style=style.css

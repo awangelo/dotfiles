@@ -1,51 +1,40 @@
-# The following lines were added by compinstall
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt inc_append_history
+setopt share_history
+setopt hist_ignore_all_dups
+setopt hist_reduce_blanks
 
-zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
-zstyle :compinstall filename '/home/angelo/.zshrc'
-
+autoload -Uz colors && colors
 autoload -Uz compinit
 compinit
-# End of lines added by compinstall
-# Lines configured by zsh-newuser-install
-HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
-unsetopt beep
-bindkey -e
-# End of lines configured by zsh-newuser-install
+setopt correct
+zstyle ':completion:*' menu select
 
+bindkey '^[[1;5D' backward-word # C+Left
+bindkey '^[[1;5C' forward-word  # C+Right
+bindkey '^[[1;6D' backward-word # C+S+Left
+bindkey '^[[1;6C' forward-word  # C+S+Right
 
-bindkey "^[[3~" delete-char
-bindkey "^[[1;5C" forward-word
-bindkey "^[[1;5D" backward-word
+bindkey "^R" history-incremental-search-backward
 
-source <(fzf --zsh)
-eval "$(starship init zsh)"
+PROMPT='%F{color7}%~%f %F{color7}λ%f '
 
-
-# Aliases
+alias s='sudo'
+alias vim='nvim'
+alias cclean='sudo pacman -Sc; paru -Sc'
+alias mkdir='mkdir -p'
 alias ..='cd ..'
 alias ...='cd ../..'
-alias .3='cd ../../..'
 
 alias ls='eza --icons=always'
 alias la='eza --icons=always -a'
 alias ll='eza --icons=always -la'
-alias lf='eza --icons=always -la --group-directories-first'
-alias ld='eza -aD'
-alias lt='eza -aT'
+alias ld='eza --icons=always -la --group-directories-first'
+alias lt='eza --icons=always -aT'
 
-alias s=sudo
-alias cclean='sudo pacman -Scc; yay -Scc'
-alias mkdir='mkdir -p'
-alias se="fzf --bind 'enter:become(vim {})'"
-alias sd='cd $(ls -d **/*(/D) | fzf --exact | cut -c 5-)'
-#alias vim='nvim'
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-r() {
-    length=${1:-32}
-    head /dev/urandom | tr -dc A-Za-z0-9 | head -c "$length" ; echo ''
-}
-
-source /home/angelo/.config/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /home/angelo/.config/zsh-autosuggestions/zsh-autosuggestions.zsh
+[ -f "/home/angelo/.ghcup/env" ] && . "/home/angelo/.ghcup/env" # ghcup-env
