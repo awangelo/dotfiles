@@ -1,19 +1,3 @@
 # dotfiles
 
-## Screenshots
-
-![1](https://files.catbox.moe/1r6v3x.png)
-![2](https://files.catbox.moe/atfwqf.png)
-![3](https://files.catbox.moe/fzibay.png)
-
-## Specifications
-
-- **OS**: [Arch](https://archlinux.org/)
-- **WM**: [Hyprland](https://hyprland.org/)
-- **Bar**: [Waybar](https://github.com/Alexays/Waybar)
-- **Terminal**: [kitty](https://sw.kovidgoyal.net/kitty/)
-- **Shell**: [zsh](https://www.zsh.org/)
-- **Launcher**: [wofi](https://hg.sr.ht/~scoopta/wofi)
-- **Wallpaper**: [feh](https://feh.finalrewind.org/)
-- **Theme**: [Rosé Pine](https://rosepinetheme.com/)
-- **Fonts**: JetBrains Mono
+<img width="1920" height="1080" alt="2025-09-10-185645_hyprshot" src="https://github.com/user-attachments/assets/23789566-cb94-42b5-9c4c-2ce2c9cb94ab" />
