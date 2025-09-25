@@ -39,6 +39,9 @@ alias ll='eza --icons=always -la'
 alias ld='eza --icons=always -la --group-directories-first'
 alias lt='eza --icons=always -aT'
 
+alias perf="sudo cpupower frequency-set -g performance -u \$(cat /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq)"
+alias eco="sudo cpupower frequency-set -g powersave -u 3.0GHz"
+
 r() {
 	length=${1:-32}
 	head /dev/urandom | tr -dc A-Za-z0-9 | head -c "$length" ; echo ''
