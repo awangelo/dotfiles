@@ -1,0 +1,15 @@
+bleopt editor=nvim
+bleopt history_lazyload=1
+bleopt delete_selection_mode=1
+bleopt indent_offset=4
+bleopt indent_tabs=0
+bleopt edit_line_type=graphical
+bleopt exec_errexit_mark=
+
+ble-face -s syntax_error fg=red
+ble-face -s auto_complete fg=244
+ble-face -s command_builtin fg=green
+
+ble-bind -m emacs --cursor 1
+
+ble-sabbrev -w s=sudo

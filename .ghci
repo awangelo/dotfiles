@@ -1,0 +1,2 @@
+:set prompt "%s \x03BB "
+:set prompt-cont "  | "

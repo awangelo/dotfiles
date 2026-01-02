@@ -1,0 +1,24 @@
+
+[Default Applications]
+text/html=org.qutebrowser.qutebrowser.desktop
+x-scheme-handler/http=org.qutebrowser.qutebrowser.desktop
+x-scheme-handler/https=org.qutebrowser.qutebrowser.desktop
+x-scheme-handler/about=org.qutebrowser.qutebrowser.desktop
+x-scheme-handler/unknown=org.qutebrowser.qutebrowser.desktop
+
+image/jpeg=imv.desktop
+image/png=imv.desktop
+image/gif=imv.desktop
+image/webp=imv.desktop
+image/svg+xml=imv.desktop
+image/bmp=imv.desktop
+image/tiff=imv.desktop
+
+video/mp4=mpv.desktop
+video/mkv=mpv.desktop
+video/webm=mpv.desktop
+video/x-matroska=mpv.desktop
+video/quicktime=mpv.desktop
+video/x-flv=mpv.desktop
+
+x-scheme-handler/discord=equibop.desktop

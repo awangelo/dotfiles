@@ -1,0 +1,23 @@
+[general]
+import = ["themes/noctalia.toml"]
+
+[window]
+opacity = 0.9
+dynamic_padding = true
+
+[window.padding]
+y = 5
+x = 8
+
+[font]
+normal = { family = "FiraCode Nerd Font", style = "Regular" }
+size = 15
+
+[cursor]
+blink_interval = 700
+
+[keyboard]
+bindings = [
+  { key = "K", mods = "Alt", action = "ScrollHalfPageUp" },
+  { key = "J", mods = "Alt", action = "ScrollHalfPageDown" },
+]
