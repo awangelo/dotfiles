@@ -49,8 +49,13 @@ input {
 
 output "eDP-1" {
     mode "1920x1200"
-    scale 1.15
+    scale 1.0
 }
+
+//output "HDMI-A-1" {
+//    mode "1920x1080"
+//    scale 0.7
+//}
 
 layout {
     gaps 16
@@ -105,7 +110,7 @@ animations {
 
 window-rule {
     match app-id="qutebrowser"
-    open-on-workspace " "
+    open-on-workspace " "
     open-maximized true
 }
 
@@ -124,19 +129,21 @@ binds {
 
     Ctrl+Alt+Delete { quit; }
     Mod+Shift+P { power-off-monitors; }
-    Mod+B { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "bar" "toggle"; }
+
+    Mod+Return repeat=false         { spawn "alacritty"; }
+    Mod+E repeat=false              { spawn "nautilus"; }
+    Mod+Z                           { spawn "wooz" "--zoom-in" "50%" "--mouse-track" "--invert-scroll"; }
+    Mod+B                           { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "bar" "toggle"; }
+    Mod+D repeat=false              { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
+    Mod+V repeat=false              { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "launcher" "clipboard"; }
+    Mod+Period repeat=false         { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "launcher" "emoji"; }
+    Mod+Comma repeat=false          { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:unicode" "toggle"; }
+    Super+Shift+O repeat=false      { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
+    Super+Shift+Escape repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "sessionMenu" "toggle"; }
 
     Print       { screenshot; }
     Shift+Print { screenshot-screen; }
     Alt+Print   { screenshot-window; }
-
-    Mod+Return repeat=false         { spawn "alacritty"; }
-    Mod+E repeat=false              { spawn "nautilus"; }
-    Mod+D repeat=false              { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
-    Mod+V repeat=false              { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "launcher" "clipboard"; }
-    Mod+Period repeat=false         { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "launcher" "emoji"; }
-    Super+Shift+O repeat=false      { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
-    Super+Shift+Escape repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "sessionMenu" "toggle"; }
 
     Mod+O repeat=false { toggle-overview; }
     Mod+G repeat=false { toggle-overview; }
