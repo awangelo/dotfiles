@@ -1,0 +1,46 @@
+[colors.primary]
+background = "#0B0605"
+foreground = "#dbc7c8"
+
+[colors.cursor]
+text   = "#0B0605"
+cursor = "#dbc7c8"
+
+[colors.normal]
+black   = "#0B0605"
+red     = "#93847B"
+green   = "#C3837E"
+yellow  = "#A47C84"
+blue    = "#9A8D87"
+magenta = "#A79791"
+cyan    = "#B3A8A3"
+white   = "#dbc7c8"
+
+[colors.bright]
+black   = "#998b8c"
+red     = "#93847B"
+green   = "#C3837E"
+yellow  = "#A47C84"
+blue    = "#9A8D87"
+magenta = "#A79791"
+cyan    = "#B3A8A3"
+white   = "#dbc7c8"
+
+[window]
+padding = { y = 5, x = 10 }
+dynamic_padding = true
+
+[font]
+normal = { family = "UbuntuMono Nerd Font", style = "Regular" }
+size = 14
+
+[cursor]
+style.shape = "Beam"
+style.blinking = "on"
+blink_interval = 700
+
+[keyboard]
+bindings = [
+  { key = "K", mods = "Alt", action = "ScrollHalfPageUp" },
+  { key = "J", mods = "Alt", action = "ScrollHalfPageDown" },
+]

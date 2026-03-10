@@ -1,0 +1,64 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "bindings": {
+      "ctrl-q": null,
+    },
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-`": "git_panel::Toggle",
+      "ctrl-b": "project_panel::Toggle",
+      "ctrl-q": "project_panel::Toggle",
+      "ctrl-j": "terminal_panel::Toggle",
+      "shift shift": "file_finder::Toggle",
+      "shift-tab": "command_palette::Toggle",
+    },
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "shift-tab": "command_palette::Toggle",
+      "alt-r": "editor::GoToDefinition",
+      "ctrl-r": "editor::GoToDefinition",
+      "alt-shift-r": "pane::GoBack",
+      "ctrl-shift-r": "pane::GoBack",
+      "ctrl-?": "editor::Hover",
+      "alt-shift-up": "editor::DuplicateLineUp",
+      "alt-shift-down": "editor::DuplicateLineDown",
+      "ctrl-alt-up": "editor::AddSelectionAbove",
+      "ctrl-alt-down": "editor::AddSelectionBelow",
+      "ctrl-\\": "editor::MoveToEnclosingBracket",
+      "ctrl-|": "editor::SelectLargerSyntaxNode",
+      "ctrl-up": "editor::MoveToStartOfParagraph",
+      "ctrl-down": "editor::MoveToEndOfParagraph",
+      "ctrl-shift-up": "editor::SelectToStartOfParagraph",
+      "ctrl-shift-down": "editor::SelectToEndOfParagraph",
+      "ctrl-2": "workspace::ActivatePaneRight",
+      "ctrl-1": "workspace::ActivatePaneLeft",
+      "alt-right": "pane::SplitRight",
+      "alt-left": "pane::SplitLeft",
+      "ctrl-shift-enter": "editor::NewlineAbove",
+      "ctrl-enter": "editor::NewlineBelow",
+    },
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-w": null,
+    },
+  },
+  {
+    "context": "ProjectPanel",
+    "bindings": {
+      "enter": "project_panel::Open",
+    },
+  },
+]
