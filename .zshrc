@@ -39,6 +39,10 @@ alias mkdir='mkdir -p'
 alias ..='cd ..'
 alias ...='cd ../..'
 
+export LESSHISTFILE=-
+export EDITOR='nvim'
+export VISUAL='nvim'
+export SUDO_EDITOR='nvim'
 export RIPGREP_CONFIG_PATH="$HOME/.config/.ripgreprc"
 source ~/.config/zsh/zsh-shift-select/zsh-shift-select.plugin.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh

@@ -31,8 +31,8 @@ padding = { y = 5, x = 10 }
 dynamic_padding = true
 
 [font]
-normal = { family = "UbuntuMono Nerd Font", style = "Regular" }
-size = 14
+normal = { family = "Go Mono", style = "Regular" }
+size = 12
 
 [cursor]
 style.shape = "Beam"

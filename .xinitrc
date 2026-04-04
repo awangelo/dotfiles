@@ -7,7 +7,7 @@ clipmenud &
 dbus-update-activation-environment --systemd DISPLAY XAUTHORITY
 eval $(/usr/bin/gnome-keyring-daemon --start --components=secrets)
 
-feh --bg-fill Pictures/Wallpapers/13.jpg
+feh --no-fehbg --bg-fill Pictures/Wallpapers/13.jpg
 
 slstatus &
 

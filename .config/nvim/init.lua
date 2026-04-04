@@ -3,7 +3,7 @@ vim.cmd("colorscheme vim")
 
 vim.opt.number = true -- line number
 vim.opt.relativenumber = true -- relative line numbers
-vim.opt.cursorline = true -- highlight current line
+vim.opt.cursorline = false -- highlight current line
 vim.opt.wrap = false -- do not wrap lines by default
 vim.opt.scrolloff = 5 -- keep x lines above/below cursor
 vim.opt.sidescrolloff = 5 -- keep x lines to left/right of cursor

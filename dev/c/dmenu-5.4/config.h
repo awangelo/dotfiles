@@ -8,7 +8,7 @@ static int max_width = 500;                   /* maximum width when centered */
 static const float menu_height_ratio = 2.0f;  /* This is the ratio used in the original calculation */
 /* -fn option overrides fonts[0]; default X11 font or font set */
 static const char *fonts[] = {
-    "UbuntuMono Nerd Font:size=13"
+    "Go Mono:size=12"
 };
 static const char *prompt      = NULL;      /* -p  option; prompt to the left of input field */
 static const char *colors[SchemeLast][2] = {

@@ -12,8 +12,8 @@ static const int showsystray        = 1;        /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int user_bh            = 5;        /* 2 is the default spacing around the bar's font */
-static const char *fonts[]          = { "UbuntuMono Nerd Font:size=14" };
-static const char dmenufont[]       = "UbuntuMono Nerd Font:size=14";
+static const char *fonts[]          = { "Go Mono:size=12" };
+static const char dmenufont[]       = "Go Mono:size=12";
 static const char col_gray1[]       = "#0b0605";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
@@ -70,7 +70,7 @@ static const char *dmenucmd[]   = { "dmenu_run", "-c", "-m", dmenumon, "-fn", dm
 static const char *termcmd[]    = { "alacritty", NULL };
 static const char *filescmd[]   = { "nemo", NULL };
 static const char *zoomercmd[]  = { "zooc", NULL };
-static const char *clipcmd[]    = { "clipmenu", NULL };
+static const char *clipcmd[]    = { "clipmenu", "-fn", dmenufont, NULL };
 static const char *volupcmd[]   = { "wpctl", "set-volume", "@DEFAULT_SINK@", "2%+", NULL };
 static const char *voldowncmd[] = { "wpctl", "set-volume", "@DEFAULT_SINK@", "2%-", NULL };
 static const char *volmutecmd[] = { "wpctl", "set-mute",   "@DEFAULT_SINK@", "toggle", NULL };
