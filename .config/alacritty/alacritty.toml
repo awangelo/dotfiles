@@ -1,30 +1,64 @@
-[colors.primary]
-background = "#0B0605"
-foreground = "#dbc7c8"
+###############
+## Solarized ##
+###############
 
-[colors.cursor]
-text   = "#0B0605"
-cursor = "#dbc7c8"
+[colors.primary]
+background = '#fdf6e3'
+foreground = '#586e75'
 
 [colors.normal]
-black   = "#0B0605"
-red     = "#93847B"
-green   = "#C3837E"
-yellow  = "#A47C84"
-blue    = "#9A8D87"
-magenta = "#A79791"
-cyan    = "#B3A8A3"
-white   = "#dbc7c8"
+black   = '#073642'
+red     = '#dc322f'
+green   = '#859900'
+yellow  = '#b58900'
+blue    = '#268bd2'
+magenta = '#d33682'
+cyan    = '#2aa198'
+white   = '#eee8d5'
 
 [colors.bright]
-black   = "#998b8c"
-red     = "#93847B"
-green   = "#C3837E"
-yellow  = "#A47C84"
-blue    = "#9A8D87"
-magenta = "#A79791"
-cyan    = "#B3A8A3"
-white   = "#dbc7c8"
+black   = '#002b36'
+red     = '#cb4b16'
+green   = '#586e75'
+yellow  = '#657b83'
+blue    = '#839496'
+magenta = '#6c71c4'
+cyan    = '#93a1a1'
+white   = '#fdf6e3'
+
+
+###############
+## Apoliteia ##
+###############
+
+# [colors.primary]
+# background = "#0B0605"
+# foreground = "#dbc7c8"
+
+# [colors.cursor]
+# text   = "#0B0605"
+# cursor = "#dbc7c8"
+
+# [colors.normal]
+# black   = "#0B0605"
+# red     = "#93847B"
+# green   = "#C3837E"
+# yellow  = "#A47C84"
+# blue    = "#9A8D87"
+# magenta = "#A79791"
+# cyan    = "#B3A8A3"
+# white   = "#dbc7c8"
+
+# [colors.bright]
+# black   = "#998b8c"
+# red     = "#93847B"
+# green   = "#C3837E"
+# yellow  = "#A47C84"
+# blue    = "#9A8D87"
+# magenta = "#A79791"
+# cyan    = "#B3A8A3"
+# white   = "#dbc7c8"
+
 
 [window]
 padding = { y = 5, x = 10 }

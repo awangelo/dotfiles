@@ -7,7 +7,7 @@ setopt hist_ignore_all_dups
 setopt hist_reduce_blanks
 setopt autocd
 
-PROMPT='%F{white}%~%f %F{green}♰ %f '
+PROMPT='%F{gray}%~%f %F{yellow}λ%f '
 
 autoload -Uz colors && colors
 autoload -Uz compinit

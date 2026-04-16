@@ -14,15 +14,27 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const int user_bh            = 5;        /* 2 is the default spacing around the bar's font */
 static const char *fonts[]          = { "Go Mono:size=12" };
 static const char dmenufont[]       = "Go Mono:size=12";
-static const char col_gray1[]       = "#0b0605";
+// Apoliteia
+// static const char col_gray1[]       = "#0b0605";
+// static const char col_gray2[]       = "#444444";
+// static const char col_gray3[]       = "#bbbbbb";
+// static const char col_gray4[]       = "#eeeeee";
+// static const char col_accent[]      = "#770b00";
+// static const char *colors[][3]      = {
+// 	/*               fg         bg         border   */
+// 	[SchemeNorm] = { col_gray3, col_gray1,  col_gray1  },
+// 	[SchemeSel]  = { col_gray4, col_accent, col_accent },
+// };
+// Solarized
+static const char col_gray1[]       = "#eee8d5";
 static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
-static const char col_accent[]      = "#770b00";
+static const char col_gray3[]       = "#586e75";
+static const char col_gray4[]       = "#268bd2";
+static const char col_accent[]      = "#fdf6e3";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1,  col_gray1  },
-	[SchemeSel]  = { col_gray4, col_accent, col_accent },
+	[SchemeNorm] = { col_gray3, col_gray1,  col_gray1 },
+	[SchemeSel]  = { col_gray4, col_accent, col_gray4 },
 };
 
 /* tagging */
@@ -70,7 +82,7 @@ static const char *dmenucmd[]   = { "dmenu_run", "-c", "-m", dmenumon, "-fn", dm
 static const char *termcmd[]    = { "alacritty", NULL };
 static const char *filescmd[]   = { "nemo", NULL };
 static const char *zoomercmd[]  = { "zooc", NULL };
-static const char *clipcmd[]    = { "clipmenu", "-fn", dmenufont, NULL };
+static const char *clipcmd[]    = { "clipmenu", "-i", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_accent, "-sf", col_gray4, NULL };
 static const char *volupcmd[]   = { "wpctl", "set-volume", "@DEFAULT_SINK@", "2%+", NULL };
 static const char *voldowncmd[] = { "wpctl", "set-volume", "@DEFAULT_SINK@", "2%-", NULL };
 static const char *volmutecmd[] = { "wpctl", "set-mute",   "@DEFAULT_SINK@", "toggle", NULL };
@@ -88,18 +100,20 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_e,          spawn,          {.v = filescmd } },
 	{ MODKEY,                       XK_z,          spawn,          {.v = zoomercmd } },
 	{ MODKEY,                       XK_v,          spawn,          {.v = clipcmd } },
-	{ MODKEY,                       XK_period,     spawn,          {.v = dunicode } },
+	{ MODKEY,                       XK_u,          spawn,          {.v = dunicode } },
 	{ MODKEY,                       XK_s,          spawn,          SHCMD("maim | tee ~/Pictures/Screenshots/$(openssl rand -hex 9).png | xclip -selection clipboard -t image/png > /dev/null 2>&1") },
 	{ MODKEY|ShiftMask,             XK_s,          spawn,          SHCMD("maim -u -s | tee ~/Pictures/Screenshots/$(openssl rand -hex 9).png | xclip -selection clipboard -t image/png > /dev/null 2>&1") },
 	{ MODKEY,                       XK_b,          togglebar,      {0} },
-	{ MODKEY,                       XK_j,          focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_k,          focusstack,     {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_j,          movestack,      {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_k,          movestack,      {.i = +1 } },
+	{ MODKEY,                       XK_h,          focusstack,     {.i = -1 } },
+	{ MODKEY,                       XK_l,          focusstack,     {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_h,          movestack,      {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_l,          movestack,      {.i = +1 } },
 	{ MODKEY,                       XK_i,          incnmaster,     {.i = +1 } },
 	{ MODKEY,                       XK_o,          incnmaster,     {.i = -1 } },
-	{ MODKEY,                       XK_h,          setmfact,       {.f = -0.05} },
-	{ MODKEY,                       XK_l,          setmfact,       {.f = +0.05} },
+	{ MODKEY|ShiftMask,             XK_j,          setmfact,       {.f = -0.05} },
+	{ MODKEY|ShiftMask,             XK_k,          setmfact,       {.f = +0.05} },
+	{ MODKEY,                       XK_j,          shiftview,      {.i = -1} },
+	{ MODKEY,                       XK_k,          shiftview,      {.i = +1} },
 	{ MODKEY|ShiftMask,             XK_Return,     zoom,           {0} },
 	{ MODKEY,                       XK_Tab,        view,           {0} },
 	{ MODKEY,                       XK_q,          killclient,     {0} },

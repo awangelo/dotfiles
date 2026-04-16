@@ -43,7 +43,7 @@
     "custom": 1.5,
   },
   "buffer_font_weight": 500,
-  "buffer_font_family": "Hack",
+  "buffer_font_family": "Go Mono",
   "buffer_font_features": {
     "calt": false,
   },
@@ -64,7 +64,7 @@
     "trust_all_worktrees": false,
   },
   "icon_theme": {
-    "mode": "system",
+    "mode": "light",
     "light": "Zed (Default)",
     "dark": "Zed (Default)",
   },
@@ -74,7 +74,11 @@
   },
   "ui_font_size": 16,
   "buffer_font_size": 15.5,
-  "theme": "Cyan Light",
+  "theme": {
+    "mode": "light",
+    "light": "Solarized Light",
+    "dark": "One Dark",
+  },
   "collaboration_panel": {
     "button": false,
   },
