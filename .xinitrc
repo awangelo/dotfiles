@@ -6,7 +6,7 @@ clipmenud &
 dbus-update-activation-environment --systemd DISPLAY XAUTHORITY
 eval $(/usr/bin/gnome-keyring-daemon --start --components=secrets)
 
-feh --no-fehbg --bg-fill Pictures/Wallpapers/13.jpg
+feh --no-fehbg --bg-fill Pictures/Wallpapers/alice_denoise3_scale.png
 
 setxkbmap -option ctrl:nocaps
 xset r rate 200 25
