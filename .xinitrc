@@ -8,7 +8,8 @@ eval $(/usr/bin/gnome-keyring-daemon --start --components=secrets)
 
 feh --no-fehbg --bg-fill Pictures/Wallpapers/13.jpg
 
-setxkbmap -option ctrl:nocaps &
+setxkbmap -option ctrl:nocaps
+xset r rate 200 25
 
 slstatus &
 
