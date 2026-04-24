@@ -7,6 +7,7 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "restore_on_startup": "empty_tab",
   "cli_default_open_behavior": "existing_window",
   "git_panel": {
     "dock": "left",
@@ -31,7 +32,6 @@
   },
   "title_bar": {
     "show_menus": false,
-    "show_branch_icon": false,
     "show_branch_name": true,
   },
   "diagnostics": {

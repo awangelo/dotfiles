@@ -47,7 +47,7 @@ static const Rule rules[] = {
 	 */
 	/* class           instance    title       tags mask     isfloating   monitor */
 	{ "qutebrowser",   NULL,       NULL,       1 << 1,       0,           -1 },
-	{ "brave-browser", NULL,       NULL,       1 << 2,       0,           -1 },
+	{ "Brave-browser", NULL,       NULL,       1 << 2,       0,           -1 },
 	{ "discord",       NULL,       NULL,       1 << 3,       0,           -1 },
 };
 
@@ -103,6 +103,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_u,          spawn,          {.v = dunicode } },
 	{ MODKEY,                       XK_s,          spawn,          SHCMD("maim | tee ~/Pictures/Screenshots/$(openssl rand -hex 9).png | xclip -selection clipboard -t image/png > /dev/null 2>&1") },
 	{ MODKEY|ShiftMask,             XK_s,          spawn,          SHCMD("maim -u -s | tee ~/Pictures/Screenshots/$(openssl rand -hex 9).png | xclip -selection clipboard -t image/png > /dev/null 2>&1") },
+	{ MODKEY,                       XK_c,          spawn,          SHCMD("maim -u -s | tesseract stdin stdout -l por+eng | xclip -selection clipboard -i") },
 	{ MODKEY,                       XK_b,          togglebar,      {0} },
 	{ MODKEY,                       XK_h,          focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_l,          focusstack,     {.i = +1 } },
