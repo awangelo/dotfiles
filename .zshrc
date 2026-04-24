@@ -16,6 +16,7 @@ compinit
 setopt correct
 zstyle ':completion:*' menu select
 
+bindkey -e
 bindkey '^R' history-incremental-search-backward
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
