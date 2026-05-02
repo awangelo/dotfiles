@@ -1,0 +1,57 @@
+{
+    "workbench.tips.enabled": false,
+    "workbench.startupEditor": "none",
+    "workbench.editor.showTabs": "multiple",
+    "workbench.activityBar.location": "hidden",
+    "workbench.editor.enablePreview": false,
+    "workbench.editor.tabActionCloseVisibility": false,
+    "workbench.layoutControl.enabled": false,
+    "workbench.editor.empty.hint": "hidden",
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.colorTheme": "Solarized Light",
+    "editor.fontFamily": "Lilex",
+    "editor.fontWeight": "500",
+    "editor.fontSize": 15,
+    "editor.renderWhitespace": "trailing",
+    "editor.rulers": [
+        80
+    ],
+    "editor.minimap.enabled": false,
+    "editor.semanticHighlighting.enabled": true,
+    "editor.scrollbar.horizontal": "hidden",
+    "editor.mouseWheelZoom": true,
+    "editor.tokenColorCustomizations": {
+        "comments": {
+            "fontStyle": ""
+        }
+    },
+    "window.commandCenter": false,
+    "window.density.editorTabHeight": "compact",
+    "window.menuBarVisibility": "hidden",
+    "window.restoreWindows": "none",
+    "window.title": "${dirty}${activeEditorShort}${separator}${rootName}",
+    "window.zoomPerWindow": false,
+    "explorer.compactFolders": false,
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+    "telemetry.feedback.enabled": false,
+    "telemetry.telemetryLevel": "off",
+    "security.workspace.trust.enabled": false,
+    "terminal.integrated.fontFamily": "Go Mono",
+    "files.dialog.defaultPath": "/home/angelo/dev",
+    "chat.viewSessions.enabled": false,
+    "update.showReleaseNotes": false,
+    "breadcrumbs.enabled": false,
+    "errorLens.delay": 500,
+    "github.copilot.enable": {
+        "*": false,
+        "plaintext": false,
+        "markdown": true,
+    },
+    "[markdown]": {
+        "editor.defaultFormatter": "mervin.markdown-formatter"
+    },
+    "vscord.status.idle.disconnectOnIdle": true,
+    "vscord.status.idle.enabled": false,
+    "vscord.status.idle.check": false,
+}

@@ -1,0 +1,171 @@
+[
+    {
+        "key": "ctrl+n",
+        "command": "workbench.action.files.newUntitledFile",
+    },
+    {
+        "key": "ctrl+t",
+        "command": "workbench.action.gotoSymbol",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "shift shift",
+        "command": "workbench.action.quickOpen",
+    },
+    {
+        "key": "shift+tab",
+        "command": "workbench.action.showCommands",
+    },
+    {
+        "key": "ctrl+q",
+        "command": "workbench.action.quickOpenView"
+    },
+    {
+        "key": "ctrl+q",
+        "command": "workbench.action.quickOpenNavigateNextInViewPicker",
+        "when": "inQuickOpen && inViewsPicker"
+    },
+    {
+        "key": "ctrl+r",
+        "command": "editor.action.revealDefinition",
+        "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
+    },
+    {
+        "key": "alt+r",
+        "command": "editor.action.revealDefinition",
+        "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
+    },
+    {
+        "key": "ctrl+shift+r",
+        "command": "workbench.action.navigateBack",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+shift+r",
+        "command": "workbench.action.navigateBack",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+alt+r",
+        "command": "workbench.action.splitEditorUp"
+    },
+    {
+        "key": "ctrl+1",
+        "command": "workbench.action.focusFirstEditorGroup"
+    },
+    {
+        "key": "ctrl+2",
+        "command": "workbench.action.focusSecondEditorGroup"
+    },
+    {
+        "key": "alt+left",
+        "command": "workbench.action.focusFirstEditorGroup"
+    },
+    {
+        "key": "alt+right",
+        "command": "workbench.action.focusSecondEditorGroup"
+    },
+    {
+        "key": "alt+shift+left",
+        "command": "workbench.action.moveEditorToFirstGroup",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+shift+right",
+        "command": "workbench.action.moveEditorToNextGroup",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+alt+b",
+        "command": "workbench.action.focusAuxiliaryBar",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+up",
+        "command": "spaceBlockJumper.moveUp",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+down",
+        "command": "spaceBlockJumper.moveDown",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "shift+ctrl+up",
+        "command": "spaceBlockJumper.selectUp",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "shift+ctrl+down",
+        "command": "spaceBlockJumper.selectDown",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+\\",
+        "command": "editor.action.jumpToBracket",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+shift+\\",
+        "command": "editor.action.selectToBracket",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+shift+f",
+        "command": "editor.action.formatDocument",
+        "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly",
+    },
+    {
+        "key": "alt+ctrl+up",
+        "command": "editor.action.insertCursorAbove",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "alt+ctrl+down",
+        "command": "editor.action.insertCursorBelow",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "alt+shift+up",
+        "command": "editor.action.copyLinesUpAction",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "alt+shift+down",
+        "command": "editor.action.copyLinesDownAction",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+shift+/",
+        "command": "editor.action.showHover",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "shift+alt+l",
+        "command": "lean4.toggleInfoview"
+    },
+    {
+        "key": "ctrl+r",
+        "command": "-inlineChat.regenerate",
+        "when": "inlineChatHasProvider && inlineChatVisible"
+    },
+    {
+        "key": "ctrl+r",
+        "command": "-workbench.action.openRecent"
+    },
+    {
+        "key": "ctrl+shift+enter",
+        "command": "-lean4.toggleInfoview",
+        "when": "lean4.isLeanFeatureSetActive"
+    },
+    {
+        "key": "alt+r",
+        "command": "-toggleFindRegex",
+        "when": "editorFocus"
+    },
+    {
+        "key": "alt+r",
+        "command": "-toggleSearchRegex",
+        "when": "searchViewletFocus"
+    }
+]
