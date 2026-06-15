@@ -7,9 +7,8 @@
   {
     "context": "Workspace",
     "bindings": {
-      "ctrl-`": "git_panel::Toggle",
+      "ctrl-`": "diagnostics::Deploy",
       "ctrl-b": "project_panel::Toggle",
-      "ctrl-q": "project_panel::Toggle",
       "ctrl-j": "terminal_panel::Toggle",
       "shift shift": "file_finder::Toggle",
       "shift-tab": "command_palette::Toggle",
@@ -19,6 +18,7 @@
     "context": "Editor",
     "bindings": {
       "shift-tab": "command_palette::Toggle",
+      "alt-shift-f": "editor::Format",
       "alt-r": "editor::GoToDefinition",
       "ctrl-r": "editor::GoToDefinition",
       "alt-shift-r": "pane::GoBack",

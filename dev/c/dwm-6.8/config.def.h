@@ -47,15 +47,16 @@ static const Rule rules[] = {
 	 */
 	/* class           instance    title       tags mask     isfloating   monitor */
 	{ "qutebrowser",   NULL,       NULL,       1 << 1,       0,           -1 },
-	{ "Brave-browser", NULL,       NULL,       1 << 2,       0,           -1 },
+	{ "Brave-browser", NULL,       NULL,       1 << 1,       0,           -1 },
 	{ "discord",       NULL,       NULL,       1 << 3,       0,           -1 },
+	{ "Spotify",       NULL,       NULL,       1 << 4,       0,           -1 },
 };
 
 /* layout(s) */
 static const float mfact        = 0.50; /* factor of master area size [0.05..0.95] */
 static const int nmaster        = 1;    /* number of clients in master area */
 static const int resizehints    = 1;    /* 1 means respect size hints in tiled resizals */
-static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
+static const int lockfullscreen = 1;    /* 1 will force focus on the fullscreen window */
 static const int refreshrate    = 180;  /* refresh rate (per second) for client move/resize */
 
 static const Layout layouts[] = {
@@ -116,7 +117,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_j,          shiftview,      {.i = +1} },
 	{ MODKEY,                       XK_k,          shiftview,      {.i = -1} },
 	{ MODKEY|ShiftMask,             XK_Return,     zoom,           {0} },
-	{ MODKEY,                       XK_Tab,        view,           {0} },
+	{ Mod1Mask,                     XK_Tab,        view,           {0} },
 	{ MODKEY,                       XK_q,          killclient,     {0} },
 	{ MODKEY,                       XK_t,          setlayout,      {.v = &layouts[0]} },
 	// { MODKEY,                       XK_f,          setlayout,      {.v = &layouts[1]} },

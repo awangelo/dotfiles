@@ -1,93 +1,62 @@
 {
+  "disable_ai": true,
   "restore_on_startup": "empty_tab",
   "cli_default_open_behavior": "existing_window",
-  "git_panel": {
-    "dock": "left",
-  },
-  "agent_servers": {
-    "github-copilot-cli": {
-      "type": "registry",
-    },
-  },
-  "preview_tabs": {
-    "enabled": false,
-  },
-  "toolbar": {
-    "agent_review": true,
-    "selections_menu": true,
-    "quick_actions": false,
-    "breadcrumbs": false,
-  },
-  "tabs": {
-    "show_diagnostics": "off",
-    "git_status": false,
-  },
-  "title_bar": {
-    "show_menus": false,
-    "show_branch_name": true,
-  },
-  "diagnostics": {
-    "button": true,
-  },
-  "project_panel": {
-    "dock": "left",
-    "button": true,
-  },
-  "debugger": {
-    "dock": "left",
-  },
-  "buffer_line_height": {
-    "custom": 1.5,
-  },
-  // "buffer_font_weight": 500,
-  "buffer_font_family": "Lilex",
-  "buffer_font_features": {
-    "calt": false,
-  },
-  "use_system_prompts": false,
   "use_system_path_prompts": false,
-  "edit_predictions": {
-    "mode": "subtle",
-    "copilot": {
-      "enable_next_edit_suggestions": true,
-    },
-    "provider": "copilot",
-  },
   "telemetry": {
     "diagnostics": false,
     "metrics": false,
   },
-  "session": {
-    "trust_all_worktrees": false,
+
+  "theme": "Solarized Light",
+  "icon_theme": "Zed (Default)",
+  "experimental.theme_overrides": {
+    "editor.invisible": "#bbbbbb",
   },
-  "icon_theme": {
-    "mode": "light",
-    "light": "Zed (Default)",
-    "dark": "Zed (Default)",
-  },
-  "base_keymap": "VSCode",
+
+  "ui_font_size": 16,
   "ui_font_features": {
     "calt": false,
   },
-  "ui_font_size": 16,
+  "buffer_font_family": "Lilex",
   "buffer_font_size": 15.5,
-  "theme": {
-    "mode": "light",
-    "light": "Solarized Light",
-    "dark": "One Dark",
+  // "buffer_font_weight": 500,
+  "buffer_font_features": {
+    "calt": false,
   },
-  "collaboration_panel": {
-    "dock": "left",
-    "button": false,
+  "buffer_line_height": {
+    "custom": 1.5,
   },
-  "outline_panel": {
-    "dock": "left",
-    "button": false,
+
+  "base_keymap": "VSCode",
+  "show_whitespaces": "boundary",
+
+  "title_bar": {
+    "show_user_menu": false,
+  },
+  "toolbar": {
+    "quick_actions": false,
+    "breadcrumbs": false,
   },
   "tab_bar": {
     "show_nav_history_buttons": false,
-    "show": true,
     "show_tab_bar_buttons": false,
+  },
+  "preview_tabs": {
+    "enabled": false,
+  },
+
+  "project_panel": {
+    "dock": "left",
+    "button": false,
+    "hide_root": true,
+    "auto_fold_dirs": false,
+  },
+  "outline_panel": {
+    "button": false,
+  },
+  "collaboration_panel": {
+    "button": false,
   },
   "search": {
     "button": false,
@@ -95,24 +64,13 @@
   "terminal": {
     "button": false,
   },
-  "agent": {
-    "dock": "right",
-    "default_profile": "write",
-    "enabled": true,
-    "enable_feedback": false,
-    "button": false,
+  "debugger": {
+    "dock": "left",
   },
-  "global_lsp_settings": {
-    "button": false,
-  },
+
   "git": {
     "inline_blame": {
       "enabled": false,
     },
   },
-  "show_whitespaces": "boundary",
-  "experimental.theme_overrides": {
-    "editor.invisible": "#bbbbbb",
-  },
-  "show_edit_predictions": false,
 }
