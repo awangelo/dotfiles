@@ -1,0 +1,14 @@
+#include ".config/theme/colors.Xresources"
+#include ".config/theme/font.Xresources"
+
+dwm.normbgcolor: base01
+dwm.normbordercolor: base02
+dwm.normfgcolor: base04
+dwm.selbgcolor: base0D
+dwm.selbordercolor: base0C
+dwm.selfgcolor: base00
+
+dmenu.normbgcolor: base01
+dmenu.normfgcolor: base04
+dmenu.selbgcolor: base0D
+dmenu.selfgcolor: base00

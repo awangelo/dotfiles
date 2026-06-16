@@ -10,4 +10,6 @@ feh --no-fehbg --bg-fill Pictures/Wallpapers/alice_denoise3_scale.png
 
 slstatus &
 
+xrdb -merge ~/.Xresources
+
 exec dwm
