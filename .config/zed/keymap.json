@@ -7,11 +7,19 @@
   {
     "context": "Workspace",
     "bindings": {
-      "ctrl-`": "diagnostics::Deploy",
+      "alt-o": "projects::OpenRecent",
+      "ctrl-`": "git_panel::Toggle",
+      "ctrl-p": "diagnostics::Deploy",
       "ctrl-b": "project_panel::Toggle",
       "ctrl-j": "terminal_panel::Toggle",
       "shift shift": "file_finder::Toggle",
       "shift-tab": "command_palette::Toggle",
+    },
+  },
+  {
+    "context": "GitPanel",
+    "bindings": {
+      "ctrl-`": "workspace::ToggleRightDock",
     },
   },
   {

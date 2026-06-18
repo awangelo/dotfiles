@@ -68,7 +68,7 @@ static const char unknown_str[] = "n/a";
 static const struct arg args[] = {
 	/* function      format         argument */
 	{ cpu_perc,      " CPU %s%%",    NULL },
-	{ ram_perc,      " ʊ MEM %s%%",    NULL },
+	{ ram_perc,      " ʊ RAM %s%%",    NULL },
 	{ run_command,   " ᚹ VOL %s%%",    "wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $2 * 100}'" },
 	// { battery_perc,  " ᚤ BAT %s%%",    "BAT0" },
 	{ datetime,      " ᛊ %s ",          "%Y/%m/%d" },

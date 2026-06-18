@@ -8,10 +8,10 @@
     "metrics": false,
   },
 
-  "theme": "Solarized Light",
+  "theme": "Base16 Black Metal",
   "icon_theme": "Zed (Default)",
   "experimental.theme_overrides": {
-    "editor.invisible": "#bbbbbb",
+    "editor.invisible": "#444",
   },
 
   "ui_font_size": 16,
@@ -66,6 +66,12 @@
   },
   "debugger": {
     "dock": "left",
+  },
+
+  "diagnostics": {
+    "inline": {
+      "enabled": true,
+    },
   },
 
   "git": {
