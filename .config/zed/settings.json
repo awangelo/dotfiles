@@ -1,5 +1,10 @@
 {
-  "disable_ai": true,
+  "agent": {
+    "enabled": false,
+  },
+  "edit_predictions": {
+    "provider": "copilot"
+  },
   "restore_on_startup": "empty_tab",
   "cli_default_open_behavior": "existing_window",
   "use_system_path_prompts": false,
@@ -8,30 +13,93 @@
     "metrics": false,
   },
 
-  "theme": "Base16 Black Metal",
-  "icon_theme": "Zed (Default)",
-  "experimental.theme_overrides": {
-    "editor.invisible": "#444",
+  "theme": "macOS Classic Light",
+  "theme_overrides": {
+    "macOS Classic Light": {
+      "editor.foreground": "#040403",
+      "syntax": {
+        "keyword":                 { "color": "#34589d" },
+        "keyword.control":         { "color": "#34589d" },
+        "keyword.operator":        { "color": "#34589d" },
+        "keyword.modifier":        { "color": "#34589d" },
+        "keyword.type":            { "color": "#34589d" },
+        "keyword.declaration":     { "color": "#34589d" },
+        "keyword.import":          { "color": "#34589d" },
+        "keyword.conditional":     { "color": "#34589d" },
+        "keyword.repeat":          { "color": "#34589d" },
+        "keyword.exception":       { "color": "#34589d" },
+        "keyword.directive":       { "color": "#34589d" },
+        "preproc":                 { "color": "#34589d" },
+        "variable.special":        { "color": "#34589d" },
+        "tag":                     { "color": "#34589d" },
+        "selector":                { "color": "#34589d" },
+        "type":                    { "color": "#b7612b" },
+        "enum":                    { "color": "#b7612b" },
+        "namespace":               { "color": "#b7612b" },
+        "function":                { "color": "#5847b9" },
+        "constructor":             { "color": "#5847b9" },
+        "variant":                 { "color": "#5847b9" },
+        "label":                   { "color": "#5847b9" },
+        "attribute":               { "color": "#5847b9" },
+        "selector.pseudo":         { "color": "#5847b9" },
+        "string.escape":           { "color": "#5847b9" },
+        "link_text":               { "color": "#5847b9" },
+        "link_uri":                { "color": "#5847b9" },
+        "punctuation.list_marker": { "color": "#5847b9" },
+        "punctuation.special":     { "color": "#5847b9" },
+        "string":                  { "color": "#5f803a" },
+        "string.regex":            { "color": "#5f803a" },
+        "string.special":          { "color": "#5f803a" },
+        "string.special.symbol":   { "color": "#5f803a" },
+        "number":                  { "color": "#bf4133" },
+        "boolean":                 { "color": "#bf4133" },
+        "constant":                { "color": "#bf4133" },
+        "comment":                 { "color": "#8c8982" },
+        "comment.doc":             { "color": "#8c8982" },
+        "hint":                    { "color": "#8c8982" },
+        "predictive":              { "color": "#8c8982", "font_style": "italic" },
+        "variable":                { "color": "#040403" },
+        "variable.parameter":      { "color": "#040403" },
+        "property":                { "color": "#040403" },
+        "embedded":                { "color": "#040403" },
+        "primary":                 { "color": "#040403" },
+        "text.literal":            { "color": "#040403" },
+        "operator":                { "color": "#5e5c55" },
+        "punctuation":             { "color": "#716f69" },
+        "punctuation.bracket":     { "color": "#716f69" },
+        "punctuation.delimiter":   { "color": "#716f69" },
+        "punctuation.markup":      { "color": "#716f69" },
+        "title":                   { "color": "#040403", "font_weight": 600 },
+        "emphasis":                { "color": "#040403", "font_style": "italic" },
+        "emphasis.strong":         { "color": "#040403", "font_weight": 700 },
+        "diff.plus":               { "color": "#5f803a" },
+        "diff.minus":              { "color": "#bf4133" },
+      },
+    },
   },
 
-  "ui_font_size": 16,
+  "ui_font_size": 13,
   "ui_font_features": {
     "calt": false,
+    "liga": false,
   },
-  "buffer_font_family": "Lilex",
-  "buffer_font_size": 15.5,
+  "buffer_font_family": "Monaco Nerd Font Mono",
+  "buffer_font_size": 13,
   // "buffer_font_weight": 500,
   "buffer_font_features": {
     "calt": false,
-  },
-  "buffer_line_height": {
-    "custom": 1.5,
+    "liga": false,
   },
 
   "base_keymap": "VSCode",
   "show_whitespaces": "boundary",
+  "whitespace_map": {
+    "space": "∙",
+  },
 
+  "inline_code_actions": false,
   "title_bar": {
+    "show_sign_in": false,
     "show_user_menu": false,
   },
   "toolbar": {
@@ -44,6 +112,11 @@
   },
   "preview_tabs": {
     "enabled": false,
+  },
+  "scrollbar": {
+    "axes": {
+      "horizontal": false,
+    },
   },
 
   "project_panel": {

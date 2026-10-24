@@ -2,13 +2,14 @@
   {
     "bindings": {
       "ctrl-q": null,
+      "ctrl-shift-o": ["workspace::Open", { "create_new_window": false }],
     },
   },
   {
     "context": "Workspace",
     "bindings": {
       "alt-o": "projects::OpenRecent",
-      "ctrl-`": "git_panel::Toggle",
+      "ctrl-`": "workspace::ToggleRightDock",
       "ctrl-p": "diagnostics::Deploy",
       "ctrl-b": "project_panel::Toggle",
       "ctrl-j": "terminal_panel::Toggle",
@@ -17,20 +18,15 @@
     },
   },
   {
-    "context": "GitPanel",
-    "bindings": {
-      "ctrl-`": "workspace::ToggleRightDock",
-    },
-  },
-  {
     "context": "Editor",
     "bindings": {
       "shift-tab": "command_palette::Toggle",
       "alt-shift-f": "editor::Format",
       "alt-r": "editor::GoToDefinition",
-      "ctrl-r": "editor::GoToDefinition",
+      "ctrl-r": "editor::FindAllReferences",
       "alt-shift-r": "pane::GoBack",
-      "ctrl-shift-r": "pane::GoBack",
+      "ctrl-shift-r": "editor::Rename",
+      "alt-t": "pane::GoForward",
       "ctrl-?": "editor::Hover",
       "alt-shift-up": "editor::DuplicateLineUp",
       "alt-shift-down": "editor::DuplicateLineDown",
@@ -48,12 +44,6 @@
       "alt-left": "pane::SplitLeft",
       "ctrl-shift-enter": "editor::NewlineAbove",
       "ctrl-enter": "editor::NewlineBelow",
-    },
-  },
-  {
-    "context": "Terminal",
-    "bindings": {
-      "ctrl-w": null,
     },
   },
   {
