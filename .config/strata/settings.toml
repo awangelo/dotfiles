@@ -1,0 +1,84 @@
+mode = "theme"
+theme = "tomorrow"
+omarchy_variant = "original"
+folder_peeking = false
+single_click_previews = true
+columns_mirror_selection = true
+columns_show_sizes = true
+render_documents_by_default = true
+video_preview_backend = "automatic"
+search_open_files_directly = false
+search_time_limit = 10
+search_entry_limit = 200000
+type_to_search = true
+arrow_navigation_scoped = false
+tenxer_mode = true
+filter_include_subfolders = true
+show_keybinding_hints = true
+window_show_close = false
+window_show_minimize = false
+window_show_maximize = false
+reduce_motion = false
+element_glow = false
+file_icon_colors = "brand"
+browser_mode = "columns"
+browser_density = "compact"
+browser_density_custom_px = 0
+frame_density = "compact"
+frame_density_custom_px = 0
+group_by_type = false
+list_file_clicks = 2
+list_folder_clicks = 1
+grid_file_clicks = 2
+grid_folder_clicks = 2
+explorer_file_clicks = 2
+explorer_folder_clicks = 2
+sidebar_order = [
+    "home",
+    "trash",
+    "network",
+    "recent",
+    "desktop",
+    "documents",
+    "downloads",
+    "music",
+    "pictures",
+    "videos",
+]
+sidebar_show_home = true
+sidebar_show_trash = true
+sidebar_show_network = false
+sidebar_show_recent = true
+sidebar_show_desktop = true
+sidebar_show_documents = true
+sidebar_show_downloads = true
+sidebar_show_music = true
+sidebar_show_pictures = true
+sidebar_show_videos = true
+sidebar_expanded = false
+sidebar_compact = true
+show_hidden = false
+text_size = 24
+corner_roundness = 60
+interface_font = "Monaco Nerd Font Mono"
+interface_renderer = "system"
+language = "auto"
+folders_first = true
+sort_key = "modified"
+sort_direction = "ascending"
+check_for_updates = false
+preview_muted = false
+preview_volume = 1.0
+preview_text_wrap = false
+preview_autoplay = false
+watch_network_folders = false
+thumbnail_workers = 4
+show_thumbnails = true
+icons_thumbnail_size = 64
+browser_column_width = 300
+cross_volume_drop_strategy = "always-ask"
+open_folder_after_drop = false
+date_format = "relative"
+release_channel = "stable"
+restore_tabs = true
+remember_folder_views = true
