@@ -44,6 +44,8 @@
       "alt-left": "pane::SplitLeft",
       "ctrl-shift-enter": "editor::NewlineAbove",
       "ctrl-enter": "editor::NewlineBelow",
+      "ctrl-,": "editor::ShowEditPrediction",
+      "ctrl-.": "editor::AcceptNextWordEditPrediction",
     },
   },
   {

@@ -2,6 +2,7 @@
   "agent": {
     "enabled": false,
   },
+  "show_edit_predictions": false,
   "edit_predictions": {
     "provider": "copilot"
   },
@@ -138,6 +139,7 @@
     "button": false,
   },
   "debugger": {
+    "button": false,
     "dock": "left",
   },
 
