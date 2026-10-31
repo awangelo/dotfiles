@@ -79,6 +79,7 @@
     },
   },
 
+  "tab_size": 4,
   "ui_font_size": 13,
   "ui_font_features": {
     "calt": false,
