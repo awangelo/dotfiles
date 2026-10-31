@@ -1,0 +1,8 @@
+brave-origin-bin
+equicord-installer-bin
+nerd-fonts-cozette-ttf
+paru
+ps_mem
+strata-bin
+ttf-apple-emoji
+ttf-monaco-nerd-font-git
