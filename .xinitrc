@@ -1,15 +1,16 @@
-xrandr --output HDMI-0 --mode 1920x1080 --rate 180.00
+#!/bin/sh
 
+systemctl --user import-environment DISPLAY ${XAUTHORITY+XAUTHORITY}
+if command -v dbus-update-activation-environment >/dev/null 2>&1; then dbus-update-activation-environment DISPLAY XAUTHORITY; fi
+
+xset s 300 300
+xset dpms 0 0 300
+xset r rate 300 30
+setxkbmap -layout us,br -variant , -option grp:win_space_toggle &
+
+xwallpaper --zoom "$HOME/Pictures/Wallpapers/snipe3-3E41F.jpg"
 export CM_SELECTIONS="clipboard"
-clipmenud &
-
-dbus-update-activation-environment --systemd DISPLAY XAUTHORITY
-eval $(/usr/bin/gnome-keyring-daemon --start --components=secrets)
-
-feh --no-fehbg --bg-fill Pictures/Wallpapers/alice_denoise3_scale.png
-
+export CM_OWN_CLIPBOARD=1
+clipmenud >/dev/null 2>&1 &
 slstatus &
-
-xrdb -merge ~/.Xresources
-
 exec dwm
