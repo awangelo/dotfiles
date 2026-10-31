@@ -9,9 +9,9 @@ index e5efb6a..7b8d4a0 100644
 -#define ISVISIBLE(C)            ((C->tags & C->mon->tagset[C->mon->seltags]))
 +#define ISVISIBLEONTAG(C, T)    ((C->tags & T))
 +#define ISVISIBLE(C)            ISVISIBLEONTAG(C, C->mon->tagset[C->mon->seltags])
+ #define LENGTH(X)               (sizeof X / sizeof X[0])
  #define MOUSEMASK               (BUTTONMASK|PointerMotionMask)
  #define WIDTH(X)                ((X)->w + 2 * (X)->bw)
- #define HEIGHT(X)               ((X)->h + 2 * (X)->bw)
 @@ -147,6 +148,7 @@ static int applysizehints(Client *c, int *x, int *y, int *w, int *h, int interac
  static void arrange(Monitor *m);
  static void arrangemon(Monitor *m);

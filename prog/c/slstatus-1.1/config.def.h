@@ -1,7 +1,6 @@
 /* See LICENSE file for copyright and license details. */
 
 /* interval between updates (in ms) */
-#include <stdio.h>
 const unsigned int interval = 2000;
 
 /* text to show if no value can be retrieved */
@@ -66,11 +65,8 @@ static const char unknown_str[] = "n/a";
  * wifi_perc           WiFi signal in percent          interface name (wlan0)
  */
 static const struct arg args[] = {
-	/* function      format         argument */
-	{ cpu_perc,      " CPU %s%%",    NULL },
-	{ ram_perc,      " ʊ RAM %s%%",    NULL },
-	{ run_command,   " ᚹ VOL %s%%",    "wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $2 * 100}'" },
-	// { battery_perc,  " ᚤ BAT %s%%",    "BAT0" },
-	{ datetime,      " ᛊ %s ",          "%Y/%m/%d" },
-	{ datetime,      "%s",          "%H:%M" },
+	/* function      format           argument */
+	{ run_command,   " vol %s | ",   "wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $2 * 100 \"%\"}'" },
+	{ battery_perc,  "bat %s%% | ",  "BAT0" },
+	{ datetime,      "%s",           "%Y/%m/%d %H:%M" },
 };
