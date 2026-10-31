@@ -1,15 +1,12 @@
-[general]
-import = [
-    "~/.config/alacritty/colors.toml",
-    "~/.config/alacritty/font.toml"
-]
-
 [window]
 padding = { y = 5, x = 10 }
 dynamic_padding = true
 
+[font]
+normal.family = "Monaco Nerd Font Mono"
+size = 11
+
 [cursor]
-style.shape = "Beam"
 style.blinking = "on"
 blink_interval = 700
 
@@ -18,3 +15,27 @@ bindings = [
   { key = "K", mods = "Alt", action = "ScrollHalfPageUp" },
   { key = "J", mods = "Alt", action = "ScrollHalfPageDown" },
 ]
+
+[colors.primary]
+background = '#000000'
+foreground = '#c1c1c1'
+
+[colors.normal]
+black   = '#000000'
+red     = '#875f5f'
+green   = '#5f8787'
+yellow  = '#87785f'
+blue    = '#5f81a5'
+magenta = '#685f87'
+cyan    = '#859caf'
+white   = '#c1c1c1'
+
+[colors.bright]
+black   = '#333333'
+red     = '#bd8686'
+green   = '#86bdbd'
+yellow  = '#bdab86'
+blue    = '#85aed6'
+magenta = '#8e86bd'
+cyan    = '#d0dfee'
+white   = '#ffffff'
