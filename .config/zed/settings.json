@@ -1,4 +1,13 @@
 {
+  "lsp": {
+    "discord_presence": {
+      "initialization_options": {
+        "small_image": null,
+        "idle": { "timeout": 999 }
+      }
+    }
+  },
+
   "agent": {
     "enabled": false,
   },

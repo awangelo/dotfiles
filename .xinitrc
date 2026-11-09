@@ -6,7 +6,7 @@ if command -v dbus-update-activation-environment >/dev/null 2>&1; then dbus-upda
 xset s 300 300
 xset dpms 0 0 300
 xset r rate 300 30
-setxkbmap -layout us,br -variant , -option grp:win_space_toggle &
+setxkbmap -layout us,br -variant , -option grp:win_space_toggle,ctrl:nocaps
 
 xwallpaper --zoom "$HOME/Pictures/Wallpapers/snipe3-3E41F.jpg"
 export CM_SELECTIONS="clipboard"
