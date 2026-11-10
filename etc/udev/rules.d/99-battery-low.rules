@@ -1,0 +1,5 @@
+SUBSYSTEM=="power_supply", KERNEL=="BAT0", ACTION=="change", ATTR{status}=="Discharging", ATTR{capacity_level}=="Low", ATTR{alarm}="0", RUN+="/bin/sh -c 'for i in 1 2 3; do /usr/bin/brightnessctl -q -s set 0; /usr/bin/sleep 0.5; /usr/bin/brightnessctl -q -r; /usr/bin/sleep 0.5; done'"
+
+# The firmware keeps sending events while below the alarm, so the rule also clears it to
+# fire only once per discharge, then re-arms the alarm when the charger is plugged in.
+SUBSYSTEM=="power_supply", KERNEL=="AC", ACTION=="change", ATTR{online}=="1", RUN+="/bin/sh -c 'echo 2268000 > /sys/class/power_supply/BAT0/alarm'"
